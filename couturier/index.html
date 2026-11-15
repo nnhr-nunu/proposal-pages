@@ -94,7 +94,7 @@ details.note[open] summary::before{ content:"－ ";}
 <li>現金のお客様を入れている「予定」は、お客様・メニュー・金額とつながっていないため、<b>予約の一覧にも、売上にも、来店履歴にも出てきません</b>。</li>
 <li>「予定」を入れても<b>空き枠の表示は減りません</b>。そのため、ネット予約と席が重なることがありえます。</li>
 <li>電話予約は、メニューは入っていても<b>金額が空欄のものが多くありました</b>。</li>
-<li>サロンボードには外のアプリと自動でつなぐ公式の仕組みがありません。そのかわり、<b>売上明細とお客様情報は、ファイル（CSV）で取り出せます</b>。</li>
+<li>サロンボードには外のアプリと自動でつなぐ公式の仕組みがありません。そのかわり、<b>売上明細と予約の一覧は、ファイル（CSV）で取り出せます</b>（予約は、予約の一覧で検索すると「CSV出力」が出てきます）。ネット予約もアプリに取り込める見込みです。</li>
 </ul>
 <p class="sub" style="margin:8px 0 0;">お預かりしたIDで、画面を見ることだけを行いました（2026年11月16日）。登録・変更・削除は一切していません。</p>
 </div>
@@ -118,7 +118,7 @@ details.note[open] summary::before{ content:"－ ";}
 
 <h2 id="send">ご回答の送り方</h2>
 <div class="card">
-<p style="margin-top:0;">下のボタンで回答が文章にまとまります。「コピーする」を押して、メールやLINEにそのまま貼って送ってください。</p>
+<p style="margin-top:0;">下のボタンで回答が文章にまとまります。「コピーする」を押して、メールやDMなどにそのまま貼って送ってください。</p>
 <button class="btn" id="makeSummary" type="button">回答をまとめる</button>
 <p class="left" id="leftMsg" hidden></p>
 <textarea id="summaryOut" readonly placeholder="ここに回答のまとめが出ます"></textarea>
@@ -169,10 +169,10 @@ var Q = [
  {id:"export", title:"売上のデータを、税理士さんや会計ソフトに渡していますか？",
   why:"渡し先が決まっていれば、そのまま使える形で書き出せるようにします。",
   opts:[["no","渡していない"],["yes","渡している（渡し先・ソフト名を下に書きます）"],["unknown","分からない"]], note:"渡し先・ソフト名（任意）"},
- {part:"準備", id:"resvcsv", title:"サロンボードで、予約をファイルに書き出す画面を確認してもよいですか？",
-  why:"サロンボードの公式の案内に「予約データ出力」という機能があります。予約の一覧の画面にはボタンが見当たりませんでした。場所が分かれば、ネット予約もアプリに取り込めます。分からない場合は、ネット予約の分をアプリに手で入れる形になります。",
-  opts:[["us","こちらで探してかまわない（前回と同じく、見るだけ）",1],["self","お店で探して、画面の写真かファイルを送る"],["talk","相談したい"]],
-  note:"ファイルを送っていただく場合、お客様の名前は伏せたもので大丈夫です"},
+ {part:"準備", id:"resvcsv", title:"予約のデータ（CSV）のサンプルを、送っていただくことはできますか？",
+  why:"こちらで確認したところ、予約の一覧をファイル（CSV）で書き出せることが分かりました。実際のファイルが1つあると、ネット予約もアプリに取り込めるようになります。書き出し方は、予約の一覧で期間を選んで検索し、結果の右上の「CSV出力」を押すだけです。",
+  opts:[["send","送れます",1],["how","送り方が分からないので、やり方を教えてほしい"],["talk","相談したい"]],
+  note:"お客様の名前は伏せたもので大丈夫です"},
  {id:"menu", title:"メニューと料金は、サロンボードに登録されているものが最新ですか？",
   why:"アプリの最初のメニューは、サロンボードから写して作ります。",
   opts:[["sb","サロンボードのものが最新"],["paper","ご要望書の別紙のメニュー表のほうが新しい"],["diff","どちらとも違うものがある"],["unknown","分からない"]]},
@@ -267,7 +267,7 @@ document.getElementById("copySummary").addEventListener("click", function(){
   var out = document.getElementById("summaryOut");
   if(!out.value) document.getElementById("makeSummary").click();
   var msg = document.getElementById("copyMsg");
-  var done = function(){ msg.textContent = "コピーしました。メールやLINEに貼って送ってください。"; };
+  var done = function(){ msg.textContent = "コピーしました。メールやDMなどに貼って送ってください。"; };
   var fallback = function(){ out.focus(); out.select(); try { document.execCommand("copy"); done(); } catch(e){ msg.textContent = "コピーできませんでした。まとめの文章を長押しして、すべて選択してからコピーしてください。"; } };
   if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(out.value).then(done, fallback); } else { fallback(); }
 });
