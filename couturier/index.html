@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ご提案｜Salon de Couturier 様 スタッフ別・予約と売上のアプリ</title>
+<style>
+:root{ --bg:#f4f1ec; --card:#fff; --ink:#2b2622; --sub:#7a7168; --line:#e5ded4; --accent:#8a6d4f; --accent2:#b98d5e; --warn:#c0392b; --ok:#2e7d4f; --chip:#f0e9df;}
+*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+body{ margin:0; font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif; background:var(--bg); color:var(--ink); line-height:1.85;}
+.page{ max-width:880px; margin:0 auto; padding:28px 18px 60px;}
+h1{ font-size:25px; line-height:1.5; margin:0 0 8px;}
+h2{ font-size:19px; margin:38px 0 12px; padding-bottom:6px; border-bottom:2px solid var(--accent2);}
+h3{ font-size:15.5px; margin:20px 0 6px;}
+p, li{ font-size:14.5px;}
+.sub{ color:var(--sub); font-size:13px;}
+.card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:12px 0;}
+.point{ background:#fbf7f0; border:1px solid #ead9c2;}
+.warnbox{ background:#fff8f7; border:1px solid #f0c9c2;}
+.okbox{ background:#f4faf6; border:1px solid #cfe6d8;}
+ol, ul{ padding-left:22px; margin:8px 0;}
+li{ margin:4px 0;}
+table{ width:100%; border-collapse:collapse; font-size:13.5px; margin:10px 0; background:var(--card);}
+th, td{ border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+th{ background:#f7f3ec;}
+td.num, th.num{ text-align:right; white-space:nowrap;}
+.price{ font-size:34px; font-weight:800; letter-spacing:.5px;}
+.bar-row{ display:flex; align-items:center; gap:10px; margin:7px 0; font-size:13px;}
+.bar-label{ width:230px; flex:0 0 auto;}
+.bar-track{ flex:1; background:#eee7db; border-radius:99px; height:16px; overflow:hidden;}
+.bar{ height:100%; background:var(--accent2); border-radius:99px;}
+.bar.ours{ background:var(--accent);}
+.bar-val{ width:110px; flex:0 0 auto; text-align:right; font-weight:700;}
+@media (max-width:640px){.bar-label{ width:130px;}.bar-val{ width:86px;}}
+/* phone mock */
+.mockwrap{ display:flex; gap:22px; flex-wrap:wrap; align-items:flex-start; margin-top:8px;}
+.phone{ width:360px; max-width:100%; background:#111; border-radius:36px; padding:9px; box-shadow:0 12px 30px rgba(0,0,0,.18); flex:0 0 auto;}
+.screen{ background:#faf8f5; border-radius:28px; overflow:hidden; height:660px; display:flex; flex-direction:column; line-height:1.5;}
+.appbar{ background:var(--card); padding:12px 15px 9px; border-bottom:1px solid var(--line);}
+.appbar.shop{ font-size:11.5px; color:var(--sub);}
+.appbar.title{ font-size:16px; font-weight:700;}
+.mbody{ flex:1; overflow-y:auto; padding:11px 13px 15px;}
+.tabbar{ display:flex; background:var(--card); border-top:1px solid var(--line);}
+.tabbar button{ flex:1; border:0; background:none; padding:8px 0 11px; font-size:10.5px; color:var(--sub); cursor:pointer; font-family:inherit;}
+.tabbar button.on{ color:var(--accent); font-weight:700;}
+.tabbar button.ic{ display:block; font-size:17px; margin-bottom:1px;}
+.mcard{ background:var(--card); border:1px solid var(--line); border-radius:13px; padding:11px 13px; margin-bottom:9px; font-size:13px;}
+.row{ display:flex; justify-content:space-between; align-items:center; gap:8px;}
+.muted{ color:var(--sub); font-size:11.5px;}
+.big{ font-size:21px; font-weight:800;}
+.badge{ display:inline-block; font-size:10.5px; padding:2px 8px; border-radius:99px; background:var(--chip); color:var(--accent); font-weight:700;}
+.badge.warn{ background:#fdecea; color:var(--warn);}
+.badge.ok{ background:#e7f4ec; color:var(--ok);}
+.resv{ border-left:5px solid var(--accent2);}
+.resv.unpaid{ border-left-color:var(--warn);}
+.resv.time{ font-weight:800; font-size:14.5px;}
+.stafftabs{ display:flex; gap:5px; margin-bottom:9px; flex-wrap:wrap;}
+.stafftabs span{ font-size:11.5px; padding:4px 9px; border-radius:99px; background:var(--card); border:1px solid var(--line);}
+.stafftabs span.on{ background:var(--accent); color:#fff; border-color:var(--accent);}
+.paybtns{ display:flex; gap:7px; flex-wrap:wrap; margin:7px 0;}
+.paybtns button{ border:1px solid var(--line); background:var(--card); border-radius:9px; padding:8px 11px; font-size:12.5px; cursor:pointer; font-family:inherit;}
+.paybtns button.on{ background:var(--accent); color:#fff; border-color:var(--accent);}
+.primary{ display:block; width:100%; border:0; background:var(--accent); color:#fff; font-size:14.5px; font-weight:700; padding:12px; border-radius:11px; cursor:pointer; margin-top:9px; font-family:inherit;}
+.diff{ font-size:13px; padding:9px 11px; border-radius:9px; background:#e7f4ec; color:var(--ok); font-weight:700;}
+.diff.ng{ background:#fdecea; color:var(--warn);}
+table.sales{ border:0; margin:0;} table.sales td, table.sales th{ border:0; border-bottom:1px solid var(--line); padding:6px 3px; text-align:right; background:none;}
+table.sales td:first-child, table.sales th:first-child{ text-align:left;}
+.view{ display:none;}.view.on{ display:block;}
+.menurow{ display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--line); font-size:12.5px;}
+.menurow:last-child{ border-bottom:0;}
+.side{ flex:1; min-width:280px; line-height:1.6;}
+textarea{ width:100%; min-height:70px; border:1px solid var(--line); border-radius:10px; padding:9px; font-size:13px; font-family:inherit; background:#fffdf9;}
+textarea:focus{ outline:2px solid var(--accent2);}
+.copyout{ min-height:100px; background:#f7f3ec;}
+.checklist{ list-style:none; padding-left:2px;}
+.checklist li::before{ content:"✓ "; color:var(--ok); font-weight:800;}
+.footer{ margin-top:44px; color:var(--sub); font-size:12.5px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<p class="sub">Salon de Couturier（中目黒）深谷 康司 様</p>
+<h1>スタッフごとの「予約」と「売上」が分かるアプリのご提案</h1>
+<p>ご要望書と、いまお使いのサロンボードの実際の画面を確認してまとめました。専門用語はできるだけ使っていません。このページの下の方には、実際の画面のイメージ（モック）も付いています。タブを押して切り替えられますので、触りながらご覧ください。</p>
+
+<h2>1. 結論</h2>
+<div class="card point">
+<ol>
+<li><b>作るのは、サロンボードの代わりではありません。</b> 予約の受付は今までどおりサロンボードで受けていただき、このアプリは「お店の中の台帳」として使います。</li>
+<li><b>必要な機能は、最初から全部入れます。</b> 予約・会計・売上の合計・カルテ・サロンボードからのデータ取り込みまで、毎日の営業に要るものを一式で作ります。料金も、それ全部で1つの金額です（§6）。</li>
+<li><b>月々の保守費用はいただきません。</b> ふだんの変更はお店側でできる作りにして、操作の説明書もお渡しします。大きな改修のときだけ、都度お見積もりで呼んでください。</li>
+<li><b>いちばん大事な機能は2つです。</b>「会計がまだの予約がその日のうちに分かること」と「予約の金額と実際の売上が合っているか分かること」です。</li>
+</ol>
+</div>
+
+<h2>2. いま困っていること（サロンボードを見て分かったこと）</h2>
+<ol>
+<li><b>現金のお客様を入れる「予定」は、予約として数えられていません。</b>「予定」は名前と時間だけで、お客様情報・メニュー・金額とつながっていないため、予約の一覧にも、売上にも、来店履歴にも出てきません。記録に残らないのは、画面の仕組みがそうなっているためです。</li>
+<li><b>席が埋まっていても、空きの表示は減りません。</b> 受付できる数は全体で3つ（セット面3席と同じ数）ですが、「予定」で席を使っている時間でも表示上の空きは減りません。予定で1席使っているときに新しい予約が3件入ると、実際には4件が同時に進む形になりえます。</li>
+<li><b>電話予約は、金額が入っていないものが多い状態でした。</b> 金額が空欄だと、あとから「予約の金額と売上が合っているか」を比べられません。</li>
+<li><b>集計の画面によって、合計が少し違うことがあります。</b> 実際に、ある月の集計では画面によって数千円の差がありました（割引の扱い方が画面で違うためと思われます）。ミスがなくても数字はズレるので、「どの数字を正とするか」を1つに決めて比べられる仕組みが要ります。</li>
+</ol>
+
+<h2>3. このアプリで変わること</h2>
+<table>
+<tr><th style="width:26%;">こと</th><th style="width:35%;">いま</th><th>アプリを使うと</th></tr>
+<tr><td>月末の申告合わせ</td><td>スタッフ各自が自分の現金売上を集計して申告</td><td>スタッフごとの合計が自動で出るので、確認するだけになります</td></tr>
+<tr><td>会計の入れ忘れ</td><td>その日のうちに気づく方法がない</td><td>閉店前に「会計がまだの予約」の一覧を見るだけ（1〜2分）で気づけます</td></tr>
+<tr><td>予約の重なり</td><td>空き表示が当てにならず、起きてから分かる</td><td>入力した時点で「時間が重なっています」「3席を超えます」と知らせます</td></tr>
+<tr><td>お客様の前回の内容</td><td>サロンボードの画面を行き来して確認</td><td>カルテを開けば、前回のメニュー・金額・担当がそのまま出ます</td></tr>
+</table>
+<p>時間の目安として、月末の集計・申告の作業は、スタッフ4名で月に合計2〜4時間ほどと見ています（1人あたり30分〜1時間という仮定です）。アプリを使えば、この作業は「数字を確認する15分ほど」に置き換わります。</p>
+<p>金額の話も正直に書きます。もし月に平均1万円ほどの会計が2件、記録から漏れていたとしたら、1年で約24万円が台帳に残らない計算になります。これは「もし漏れていたら」の試算で、実測ではありません。ただ、お店は月に100件以上の会計がある規模ですので、漏れが起きる余地自体は十分にある大きさです。また、予約の重なりで1件をお断りする事態になると、お客様1人あたりの平均金額（約1万5,000円）に加えて、お詫びと日程調整の手間がかかります。このアプリは重なりを「防ぐ」ものではなく「入れる前に気づける」ようにするものです。入れるかどうかは、最後は人が選べます。</p>
+<p>そして何より、<b>記録が残るので、誰かを疑う必要がなくなります。</b> 申告漏れや計算違いは、人がやる以上ゼロにはなりません。大事なのは、起きたときに記録で確認できることです。</p>
+
+<h2>4. できること</h2>
+<ul class="checklist">
+<li><b>予約</b>：スタッフごとに今日・明日の予約が見られます。現金のお客様も含め、全員を正式な予約として入れられます。変更・キャンセルもできます</li>
+<li><b>会計</b>：予約からそのまま会計へ。金額と支払い方法（現金／クレジットカード／QR・電子マネー／ポイントなど）を選ぶだけ。店販の追加や割引も入れられます</li>
+<li><b>会計チェック</b>：会計がまだの予約は一覧に残ります。予約の金額と売上が違うと、その場で分かります。「割引」「メニュー変更」「店販追加」などの理由を1タップで残せるので、理由のある差は正常として扱い、理由のない差だけが月末に一覧で出ます</li>
+<li><b>売上</b>：自分の今日・今月の売上、お店全体、スタッフごとの合計が自動で出ます。表計算ソフトで開けるファイル（CSV）での書き出しもできます</li>
+<li><b>カルテ（簡易版）</b>：お客様ごとのメモと、来店履歴（いつ・何のメニューで・担当は誰・いくらか）が自動で並びます。薬剤の配合記録や写真のような本格機能は入れていません</li>
+<li><b>メニュー・商品の管理</b>：メニュー名・料金・所要時間、店販商品の登録・変更が、お店側でできます（値上げのときの仕組みは §7）</li>
+<li><b>サロンボードからの取り込み</b>：サロンボードの売上明細とお客様情報を、ファイル（CSV）で取り込めます（詳しくは §5）</li>
+</ul>
+<p class="sub">入れていないもの：ネット予約の受付ページ、LINE連携、カード決済そのもの、在庫管理、給与計算（ご要望書どおりです）。</p>
+
+<h2>5. サロンボードとの連携について（正直なご説明）</h2>
+<ol>
+<li><b>完全な自動連携は、きちんとした形では作れません。</b> サロンボードには、外部のアプリと自動でつなぐための公式な仕組みが用意されておらず、画面上にも連携のメニューはありませんでした。無理に自動化する方法もありますが、サロンボードの画面が少し変わるだけで止まる不安定なもので、おすすめしません。</li>
+<li><b>代わりに、ファイル（CSV）での受け渡しができます。</b> サロンボードの売上明細とお客様情報には、書き出しのボタンがあることを確認しました。これを取り込めば、売上合わせとお客様情報の移行は手入力なしでできます。取り込むときは、同じデータが二重に入らないようチェックし、「新しく入った件数・飛ばした件数」をその場で表示します。</li>
+<li><b>予約の一覧については、書き出しボタンが見当たりませんでした。</b> 公式の案内には「予約データの出力」という機能名があるので、別の画面にある可能性があります。場所と中身が確認できれば、予約も取り込めるようにします（確認のお願いは §13）。</li>
+</ol>
+
+<h2>6. 画面のイメージ</h2>
+<p>下の電話の画面は、タブを押して切り替えられます。右側（スマホでは下）の欄に、画面ごとのコメントが書けます。「ここはこうしたい」があれば書いて、一番下のボタンでまとめてコピーし、そのまま送ってください。書いた内容は、この端末に自動で残ります。</p>
+
+<div class="mockwrap">
+<div class="phone"><div class="screen">
+<div class="appbar"><div class="shop">Salon de Couturier（サンプル表示）</div><div class="title" id="viewTitle">ホーム</div></div>
+<div class="mbody">
+<section class="view on" id="v-home">
+<div class="mcard"><div class="row"><span class="muted">今日の売上（お店全体）</span><span class="badge">ある1日の例</span></div><div class="big" style="margin-top:3px;">¥86,900</div><div class="muted">自分の売上 ¥28,600 ／ 来店 7名</div></div>
+<div class="mcard" style="border-color:#f0c9c2; background:#fff8f7;"><div class="row"><span style="font-weight:700;">⚠ 会計がまだの予約</span><span class="badge warn">2件</span></div><div class="muted" style="margin-top:3px;">閉店前にここが0件になれば、その日の漏れはありません。</div></div>
+<div class="muted" style="margin:8px 2px 5px;">今日の自分の予約</div>
+<div class="mcard resv"><div class="row"><span class="time">10:00 田中 様</span><span class="badge ok">会計済み</span></div><div>カット ¥8,800</div></div>
+<div class="mcard resv unpaid"><div class="row"><span class="time">13:00 佐藤 様</span><span class="badge warn">未会計</span></div><div>カット＆カラー全体染め ¥15,950</div></div>
+<div class="mcard resv"><div class="row"><span class="time">16:30 鈴木 様</span><span class="badge">予約</span></div><div>ヘアカット ¥7,700</div></div>
+<button class="primary">＋ 予約を追加する</button>
+</section>
+<section class="view" id="v-resv">
+<div class="stafftabs"><span class="on">全員</span><span>深谷</span><span>吉留</span><span>岸</span><span>玉野井</span></div>
+<div class="mcard" style="padding:9px 13px;"><div class="row"><span class="muted">同時刻の予約数（席は3席まで）</span><span class="badge">13時台 2 / 3席</span></div></div>
+<div class="mcard resv"><div class="row"><span class="time">10:00–11:00 深谷</span><span class="badge ok">会計済み</span></div><div>田中 様／カット ¥8,800</div></div>
+<div class="mcard resv unpaid"><div class="row"><span class="time">13:00–15:30 深谷</span><span class="badge warn">未会計</span></div><div>佐藤 様／カット＆カラー全体染め ¥15,950</div></div>
+<div class="mcard resv"><div class="row"><span class="time">13:30–14:30 吉留</span><span class="badge ok">会計済み</span></div><div>高橋 様／ヘアカット ¥7,700（指名料 ¥3,000）</div></div>
+<div class="mcard resv"><div class="row"><span class="time">16:30–17:30 岸</span><span class="badge">予約</span></div><div>鈴木 様／ヘアカット ¥7,700</div></div>
+<div class="mcard" style="background:#f7f3ec;"><div style="font-weight:700;">重なるときは先に知らせます</div><div class="muted" style="margin-top:2px;">同じスタッフの時間が重なる予約や、3席を超える予約を入れようとすると、その場で警告が出ます（入れるかどうかは最終的に人が選べます）。</div></div>
+<button class="primary">＋ 予約を追加する</button>
+</section>
+<section class="view" id="v-pay">
+<div class="mcard">
+<div class="row"><span style="font-weight:700;">佐藤 様 の会計</span><span class="badge warn">未会計</span></div>
+<div style="margin-top:3px;">カット＆カラー全体染め</div>
+<div class="row" style="margin-top:7px;"><span class="muted">予約の金額</span><b>¥15,950</b></div>
+<div class="row"><span class="muted">店販（シャンプー）追加</span><b>¥3,300</b></div>
+<div class="row"><span class="muted">割引</span><b>−¥0</b></div>
+<hr style="border:0; border-top:1px solid var(--line);">
+<div class="row"><span>合計</span><span class="big" style="font-size:18px;">¥19,250</span></div>
+</div>
+<div class="muted" style="margin:3px 2px;">お支払い方法</div>
+<div class="paybtns" id="payBtns"><button class="on">現金</button><button>クレジットカード</button><button>QR・電子マネー</button><button>ポイント</button></div>
+<div class="diff" id="diffBox">予約の金額と合っています（店販の追加分は理由として記録されます）</div>
+<div class="paybtns"><button id="diffDemo">金額が違う場合の表示を見る</button></div>
+<button class="primary">会計を確定する</button>
+<p class="muted">金額が予約と違うときは、「割引」「メニュー変更」「店販追加」などの理由を1タップで残せます。理由のある差は正常として扱い、理由のない差だけが月末に一覧で出ます。</p>
+</section>
+<section class="view" id="v-sales">
+<div class="mcard"><div class="row"><span class="muted">今月のお店全体</span><span class="badge">形のイメージ</span></div><div class="big" style="margin-top:3px;">¥1,180,000</div><div class="muted">現金 ¥360,000 ／ カード ¥730,000 ／ QR等 ¥90,000</div></div>
+<div class="mcard"><div style="font-weight:700; margin-bottom:3px;">スタッフ別（今月）</div>
+<table class="sales"><tr><th>スタッフ</th><th>来店</th><th>売上</th></tr>
+<tr><td>吉留</td><td>38名</td><td>¥520,000</td></tr><tr><td>深谷</td><td>15名</td><td>¥230,000</td></tr><tr><td>岸</td><td>10名</td><td>¥150,000</td></tr><tr><td>玉野井</td><td>—</td><td>¥0</td></tr></table>
+</div>
+<div class="mcard"><div class="row"><span style="font-weight:700;">理由のない金額の差</span><span class="badge warn">今月 1件</span></div><div class="muted" style="margin-top:3px;">月末の申告合わせは、この一覧とスタッフ別合計を見るだけで済みます。</div></div>
+<button class="primary">CSVで書き出す（申告・集計用）</button>
+</section>
+<section class="view" id="v-karte">
+<div class="mcard"><div class="row"><span style="font-weight:700;">佐藤 様</span><span class="badge">来店 18回</span></div><div class="muted" style="margin-top:3px;">メモ：白髪染めは暗め希望。シャンプーは頭皮ケア系をよく購入。</div></div>
+<div class="muted" style="margin:7px 2px 5px;">来店履歴（予約・会計から自動で並びます）</div>
+<div class="mcard"><div class="row"><span>2026/11/16 深谷</span><b>¥19,250</b></div><div class="muted">カット＆カラー全体染め＋店販／現金</div></div>
+<div class="mcard"><div class="row"><span>2026/09/20 深谷</span><b>¥15,950</b></div><div class="muted">カット＆カラー全体染め／クレジットカード</div></div>
+<div class="mcard"><div class="row"><span>2026/07/12 吉留</span><b>¥10,700</b></div><div class="muted">ヘアカット＋指名料／QR・電子マネー</div></div>
+<button class="primary">メモを編集する</button>
+<p class="muted">薬剤の配合や写真のような本格的なカルテ機能は入れていません。「いつ・何を・いくらで」が自動で残る簡易版です。</p>
+</section>
+<section class="view" id="v-menu">
+<div class="mcard"><div style="font-weight:700; margin-bottom:2px;">メニュー・料金</div>
+<div class="menurow"><span>ヘアカット（60分）</span><span><b>¥7,700</b></span></div>
+<div class="menurow"><span>カット（60分）</span><span><b>¥8,800</b></span></div>
+<div class="menurow"><span>カット＆カラー全体染め（150分）</span><span><b>¥15,950</b></span></div>
+<div class="menurow"><span>ヘアセット（60分）</span><span><b>¥5,500</b></span></div>
+</div>
+<div class="mcard" style="background:#f7f3ec;"><div style="font-weight:700;">値上げ・メニュー変更のとき</div>
+<ul style="font-size:12px; line-height:1.75; color:#4a433c; margin:5px 0 0; padding-left:16px;">
+<li>料金を変えても、<b>過去の売上・来店履歴の金額は変わりません</b></li>
+<li>「いつから新しい料金か」を指定できます</li>
+<li>サロンボード側のメニューと金額が違うものがあれば、一覧でお知らせします</li>
+</ul>
+</div>
+<button class="primary">＋ メニューを追加する</button>
+</section>
+</div>
+<nav class="tabbar" id="tabbar">
+<button data-v="home" class="on"><span class="ic">🏠</span>ホーム</button>
+<button data-v="resv"><span class="ic">📅</span>予約</button>
+<button data-v="pay"><span class="ic">🧾</span>会計</button>
+<button data-v="sales"><span class="ic">💹</span>売上</button>
+<button data-v="karte"><span class="ic">👤</span>カルテ</button>
+<button data-v="menu"><span class="ic">✂️</span>メニュー</button>
+</nav>
+</div></div>
+
+<div class="side">
+<div class="card" style="margin-top:0;">
+<h3 style="margin-top:0;">コメント欄（画面ごと）</h3>
+<p class="sub" id="commentTarget">いまの画面：ホーム</p>
+<textarea id="commentBox" placeholder="例：ホームに明日の予約も出してほしい／文字をもう少し大きく"></textarea>
+<h3>全体を通して</h3>
+<textarea id="commentAll" placeholder="例：この画面は要らない／こういう使い方をしたい、など自由にどうぞ"></textarea>
+<button class="primary" id="makeSummary">コメントをまとめる</button>
+<textarea class="copyout" id="summaryOut" readonly placeholder="ここにまとめが出ます" style="margin-top:9px;"></textarea>
+<button class="primary" id="copySummary" style="background:#5c5148;">コピーする</button>
+<p class="sub" id="copyMsg"></p>
+</div>
+<div class="card">
+<h3 style="margin-top:0;">このモックについて</h3>
+<ul style="font-size:13px; padding-left:18px;">
+<li>お客様名はサンプルです。スタッフ名・メニュー・料金は実際のものです</li>
+<li>色・文字の大きさ・並び順は、コメントをもとに調整できます（この見た目が最終形ではありません）</li>
+<li>分からない言葉があれば、コメント欄に「○○って何？」と書いてください</li>
+</ul>
+</div>
+</div>
+</div>
+
+<h2>7. 長く安心して使うための仕組み</h2>
+<h3>メニューの変更・値上げのとき</h3>
+<ol>
+<li><b>料金を変えても、過去の数字は変わりません。</b> 予約を入れた時点の料金が、その予約の記録として残る作りです。来月に値上げしても、先月までの売上や来店履歴の金額はそのままで、集計が後からズレることはありません。</li>
+<li><b>「いつから新しい料金か」を指定できます。</b> 値上げ日より前に受けた予約は約束した金額のまま、これからの予約には新しい料金が付きます。</li>
+<li><b>サロンボード側とのズレをお知らせします。</b> サロンボードのメニューとアプリのメニューで、名前や金額が違うものがあれば一覧で出ます。「片方だけ直して、もう片方が古いまま」という事故を防ぎます。なお、サロンボード側の変更まではこのアプリからは行えません。そこは今までどおりサロンボードで変更していただき、ズレに気づけることがこの仕組みの役割です。</li>
+</ol>
+<h3>データの保管</h3>
+<ol>
+<li>データはインターネット上の保管場所に保存され、<b>自動で控えが取られます</b>。iPhoneをなくしてもデータは残ります。</li>
+<li>それとは別に、<b>お店側でいつでも全データをファイルで書き出せます</b>。万が一、開発者と連絡が取れなくなっても、お店のデータがお店の手元に残る形です。</li>
+<li>アプリを動かすための契約（保管場所など）は、<b>お店の名義</b>で作ります。費用の支払い先もお店から直接になるので、開発者を経由しません。</li>
+</ol>
+<h3>安心のための仕組み</h3>
+<ol>
+<li><b>スタッフごとに自分のログイン</b>を持ちます。「誰が入力したか」が分かり、スタッフが辞めたときはその人のログインだけを止められます。</li>
+<li>間違えて消しても取り消せるよう、予約のキャンセルやメニューの変更は「消す」のではなく「無効として残す」方式にします。</li>
+</ol>
+
+<h2>8. お店側で完結できること（月々の保守費用なし）</h2>
+<p>このアプリは、月々の保守費用をいただかずに使えることを前提に作ります。そのために、次のことを最初から入れます。</p>
+<div class="card okbox">
+<ul class="checklist">
+<li>メニューの追加・料金変更・値上げ日の設定は、管理画面からお店側でできます</li>
+<li>スタッフの追加・停止、支払い方法の追加も、管理画面からできます</li>
+<li>データの書き出し（バックアップ用）は、いつでもお店側でできます</li>
+<li>操作の説明書（画面つき）をお渡しします。よくある困りごとと、その直し方も載せます</li>
+<li>作ったプログラム一式（ソースコード）もお渡しします。将来、別の方に直してもらうこともできます</li>
+</ul>
+</div>
+<p><b>納品後の6か月間は、不具合を無償で対応します。</b> 使い始めてから出る問題は、作った側の責任として対応します（詳しくは §10）。その後は、大きな改修（新しい機能を足す、画面を大きく変える等）のときに、都度お見積もりで呼んでいただければ大丈夫です。小さな文言変更やメニュー変更は、上記のとおりお店側で完結できます。</p>
+
+<h2>9. 料金</h2>
+<p>必要な機能を全部入れた、1つの金額です。あとから「これは別料金です」が積み上がる形にはしません。</p>
+<div class="card point" style="text-align:center; padding:22px 18px;">
+<div class="sub">開発費用（必要な機能一式・税込）</div>
+<div class="price">170,000円</div>
+<div class="sub">これ以外に、開発に関する追加費用はかかりません</div>
+</div>
+<h3>内訳</h3>
+<table>
+<tr><th>内容</th><th class="num">金額（税込）</th></tr>
+<tr><td>要件の整理・設計（画面とデータの設計）</td><td class="num">30,000円</td></tr>
+<tr><td>アプリの開発（予約・会計・会計チェック・売上・カルテ・メニュー管理）</td><td class="num">120,000円</td></tr>
+<tr><td>導入対応（初期設定のお手伝い、使い方のご説明、開始直後のご相談）</td><td class="num">20,000円</td></tr>
+<tr><td><b>合計</b></td><td class="num"><b>170,000円</b></td></tr>
+  </table>
+  <p class="sub">操作の説明書の作成と、納品後の不具合対応（6か月・§10）は、金額に含めず無償で対応します。サロンボードからのデータ取り込みは「取り込む機能」を作りますが、実際の取り込み作業は、説明書を見ながらお店側で行っていただきます（詰まったときは導入対応の中でお手伝いします）。</p>
+<h3>この金額に含まれるもの</h3>
+<ul class="checklist">
+<li>§4 の機能すべて（予約・会計・会計チェック・売上・カルテ・メニュー管理・CSV取り込みと書き出し）</li>
+<li>iPhoneで見やすい画面（ホーム画面にアイコンを置いて開く Web アプリ形式）</li>
+<li>サロンボードからのデータ取り込み機能（作業の手順は説明書と導入対応で支援します）</li>
+<li>操作の説明書と、使い方の引き継ぎ（1回）</li>
+<li>納品後6か月の不具合の無償対応（§10）</li>
+<li>プログラム一式（ソースコード）のお渡し</li>
+</ul>
+<h3>この金額とは別にかかるもの</h3>
+<ul>
+<li><b>アプリを動かす場所の実費のみ</b>です。お店の名義で契約し、お店から直接支払う形で、目安は月0〜2,000円ほどです（この規模なら無料〜小額の範囲に収まる見込みです）。開発者への月々の支払いはありません。</li>
+</ul>
+<h3>任意の追加（必要な場合だけ）</h3>
+<table>
+<tr><th>追加の内容</th><th class="num">金額（税込）</th></tr>
+<tr><td>歩合の計算レポート（スタッフごとの歩合率を設定し、「オーナー様へ渡す金額」まで自動で出す）</td><td class="num">30,000円</td></tr>
+<tr><td>席ごとの細かい管理（席の指名・席単位での空き管理の作り込み）</td><td class="num">30,000円</td></tr>
+</table>
+<p class="sub">上記以外の新しい機能は、その都度お見積もりします。不要であれば、追加は一切ありません。</p>
+<h3>お支払いの分け方（案）</h3>
+<p>着手時に半額、納品時に半額を想定しています。ご希望があればご相談ください。</p>
+
+  <h2>10. 品質と保証について</h2>
+  <p>個人開発で金額を抑えている分、「きちんと動くのか」が心配になるのは自然なことだと思います。保証の範囲を、先に書いておきます。</p>
+  <ol>
+    <li><b>納品のときは、一緒に確認してからにします。</b> 決めた機能の一覧に沿って、実際に動くかどうかを確認していただいてから、納品とします。</li>
+    <li><b>不具合は、納品後6か月は無償で直します。</b> 「決めた通りに動かない」ものが不具合です。ご連絡をいただいたら、原則2〜3日以内に状況をご連絡し、お店の営業が止まってしまうような不具合は優先して対応します。</li>
+    <li><b>不具合ではないものは、分けます。</b> 「使い方を変えたい」「新しい機能を足したい」は改修になるので、その都度お見積もりします。入力ミスなど、お店側の操作で変わってしまったデータの修正は保証の対象外です（控えのデータから戻す作業はお手伝いします）。</li>
+    <li><b>外の都合で変わるもの。</b> サロンボードのファイル形式が変わったり、iPhoneやブラウザの大きな仕様変更があったりして調整が必要になった場合は、その都度ご相談とさせてください。軽い調整で済むことも多いです。</li>
+    <li><b>プログラムとデータをお渡しすること自体も、保証の一つと考えています。</b> 万が一、開発者と連絡が取れなくなっても、お店のデータとプログラムがお店の手元に残り、別の方に引き継げる形にします。</li>
+  </ol>
+
+<h2>11. 料金の目安として参考にしたもの</h2>
+<p>「この規模のものが、世の中ではいくらくらいで出ているか」を、誰でも見られる公開情報から並べました。金額の置き場所の参考にしてください。</p>
+<div class="card">
+<div class="bar-row"><span class="bar-label">制作会社に頼む小規模な業務アプリ</span><span class="bar-track"><span class="bar" style="width:100%;"></span></span><span class="bar-val">100万〜300万円</span></div>
+<div class="bar-row"><span class="bar-label">ココナラ「本格的な業務システム」</span><span class="bar-track"><span class="bar" style="width:35%;"></span></span><span class="bar-val">20万〜70万円</span></div>
+<div class="bar-row"><span class="bar-label"><b>今回のご提案</b></span><span class="bar-track"><span class="bar ours" style="width:9%;"></span></span><span class="bar-val">17万円</span></div>
+<div class="bar-row"><span class="bar-label">ココナラの AI活用の業務アプリ制作</span><span class="bar-track"><span class="bar" style="width:15%;"></span></span><span class="bar-val">10万〜30万円から</span></div>
+<div class="bar-row"><span class="bar-label">ココナラの美容室向け予約システム（既製品の導入）</span><span class="bar-track"><span class="bar" style="width:6%;"></span></span><span class="bar-val">5万〜12万円</span></div>
+</div>
+<table>
+<tr><th style="width:34%;">参考にしたもの</th><th style="width:20%;">価格</th><th>中身の違い</th></tr>
+<tr><td>制作会社の相場（小規模な業務アプリ）</td><td>100万〜300万円ほど</td><td>会社の運営費が乗る分、高くなります</td></tr>
+<tr><td>ココナラ公式の相場「業務システム開発」</td><td>売れ筋 2万5千〜50万円／本格的なものは20万〜70万円</td><td>ココナラ自身が公表している相場です。幅が広く、安いものは単機能のツールが中心です</td></tr>
+<tr><td>ココナラの美容室向け予約システム（既製品）</td><td>5万〜12万円ほど</td><td>出来上がっている仕組みを設定して入れるもので、お店専用に作るものではありません</td></tr>
+<tr><td>ココナラの AI活用の業務アプリ制作</td><td>10万〜30万円から</td><td>今回と同じく、AIを使って開発費を抑える方式です</td></tr>
+</table>
+<p>今回のアプリは「既製品の導入」ではなく、お店のやり方（現金のお客様の扱い、会計チェック、申告合わせ）に合わせて作る専用品です。ただ、設計にも開発にも AI を活用し、作る人も個人1人ですので、制作会社の相場からは大きく抑えられます。17万円という金額は、AIを活用する個人開発の価格帯（10万〜30万円ほど）の、真ん中あたりに設定しました。</p>
+
+<h2>12. iPhoneアプリとWebアプリについて</h2>
+<p>ご質問への回答です。今回は、iPhoneのホーム画面にアイコンを置いて開く Web アプリ形式です。普通のアプリと同じように開けますが、App Store の審査が要らないため、安く・早く作れて、直したいときもすぐに反映されます。カメラのような特別な機能を使うわけではないので、この形式で十分です。将来どうしてもストアのアプリにしたくなった場合も、データの仕組みはそのまま使えます。</p>
+
+<h2>13. 決めていただきたいこと</h2>
+<p>設計を確定するために、次の点をご相談させてください。分からないものは「おすすめで」と言っていただければ、こちらで決めます。</p>
+<ol>
+<li><b>歩合の計算まで出しますか？</b> スタッフごとの売上の合計だけでも申告合わせはできます。歩合まで出す場合は §9 の任意の追加になります。歩合率がスタッフごとに違う場合は、その内容も教えてください。</li>
+<li><b>金額の合わせ方のルール</b>：割引やポイントで払った分、指名料（吉留様は3,000円と確認しています）を、「予約の金額」と「売上の金額」のどちらに含めるか。おすすめのルールはこちらで用意しますので、ご確認だけで大丈夫です。</li>
+<li><b>他のスタッフの売上を見せる範囲</b>：全員が全員の金額まで見て良いか、自分の分だけにするか。今は全員が同じIDでサロンボードを使っている状態なので、このアプリで初めて分かれます。</li>
+<li><b>お支払い方法の種類</b>：現金・クレジットカード・ポイントのほかに、実際に使っているQRや電子マネー（PayPayなど）があれば教えてください。</li>
+<li><b>サロンボードの「予約データ出力」の確認</b>：サロンボードの画面で予約をファイルに書き出す場所が見つかれば、その画面の写真か、書き出したファイル（お客様の名前は伏せたもので大丈夫です）をいただけると、予約の取り込みができるかどうかが確定します。</li>
+</ol>
+
+<h2>14. 進め方と期間</h2>
+<ol>
+<li>このページと画面モックへのご意見をいただく</li>
+<li>§13 の確認（30分〜1時間ほどのお打ち合わせ想定）</li>
+<li>制作（約6週間。途中でも進み具合をお見せします）</li>
+<li>お店のデータ（メニュー・お客様情報）を入れて、使い方のご説明</li>
+<li>最初の2週間ほどは、サロンボードの数字とアプリの数字を並べて確認する期間をおすすめします</li>
+</ol>
+
+<p class="footer">※ 本提案の金額は、2026年11月16日時点のご要望内容と、サロンボードの確認結果をもとにしたものです。開発費用は 170,000円（税込）で確定し、§13 の確認で内容が大きく変わらない限り、追加費用はかかりません。<br>
+※ 画面モックのお客様名はサンプルです。</p>
+
+</div>
+<script>
+var titles = { home:"ホーム", resv:"予約（1日一覧）", pay:"会計", sales:"売上", karte:"カルテ", menu:"メニュー設定"};
+var current = "home";
+var comments = {};
+try { comments = JSON.parse(localStorage.getItem("salonPropComments") || "{}");} catch(e){ comments = {};}
+var box = document.getElementById("commentBox");
+var allBox = document.getElementById("commentAll");
+function save(){ try{ localStorage.setItem("salonPropComments", JSON.stringify(comments));}catch(e){}}
+function loadBox(){ box.value = comments[current] || ""; document.getElementById("commentTarget").textContent = "いまの画面：" + titles[current];}
+allBox.value = comments["_all"] || "";
+box.addEventListener("input", function(){ comments[current] = box.value; save();});
+allBox.addEventListener("input", function(){ comments["_all"] = allBox.value; save();});
+document.getElementById("tabbar").addEventListener("click", function(e){
+var b = e.target.closest("button"); if(!b) return;
+current = b.dataset.v;
+document.querySelectorAll(".tabbar button").forEach(function(x){ x.classList.toggle("on", x===b);});
+document.querySelectorAll(".view").forEach(function(v){ v.classList.toggle("on", v.id === "v-" + current);});
+document.getElementById("viewTitle").textContent = titles[current];
+loadBox();
+});
+document.getElementById("payBtns").addEventListener("click", function(e){
+var b = e.target.closest("button"); if(!b) return;
+document.querySelectorAll("#payBtns button").forEach(function(x){ x.classList.toggle("on", x===b);});
+});
+var diffOn = false;
+document.getElementById("diffDemo").addEventListener("click", function(){
+diffOn =!diffOn;
+var d = document.getElementById("diffBox");
+if(diffOn){ d.className = "diff ng"; d.textContent = "予約の金額と ¥1,000 違います。理由を選んでください：割引／メニュー変更／その他"; this.textContent = "元の表示に戻す";}
+else { d.className = "diff"; d.textContent = "予約の金額と合っています（店販の追加分は理由として記録されます）"; this.textContent = "金額が違う場合の表示を見る";}
+});
+document.getElementById("makeSummary").addEventListener("click", function(){
+var lines = [""];
+Object.keys(titles).forEach(function(k){ if(comments[k] && comments[k].trim()){ lines.push("■ " + titles[k] + "：" + comments[k].trim());}});
+if(comments["_all"] && comments["_all"].trim()){ lines.push("■ 全体：" + comments["_all"].trim());}
+if(lines.length === 1){ lines.push("（まだコメントが書かれていません）");}
+document.getElementById("summaryOut").value = lines.join("\n");
+});
+document.getElementById("copySummary").addEventListener("click", function(){
+var out = document.getElementById("summaryOut");
+out.select();
+var done = function(){ document.getElementById("copyMsg").textContent = "コピーしました。そのまま貼って送ってください。";};
+if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(out.value).then(done, function(){ document.execCommand("copy"); done();});}
+else { document.execCommand("copy"); done();}
+});
+loadBox();
+</script>
+</body>
+</html>
