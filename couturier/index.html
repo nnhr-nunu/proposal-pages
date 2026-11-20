@@ -501,6 +501,7 @@ legend { padding: 0; font-weight: 600; }
 <div><dt>ログインと見られる範囲</dt><dd><ul><li>スタッフごとに自分のログインを持ちます。お店の iPad は何人かで使うので、画面の上の「操作する人」を4桁の番号で切り替えます。</li><li>スタッフは、<b>ほかのスタッフの金額・売上・精算書を見られません</b>。お客様の一覧の書き出しは、オーナーだけができます。</li><li>画面のロックは、iPhone の画面ロック（顔認証・パスコード）とアプリのログインの2重です。iPhone をなくしたときやスタッフが辞めたときは、<b>オーナーの画面からその人のログインを止められます</b>（記録は残ります）。</li></ul></dd></div>
 <div id="f-approve"><dt>キャンセル・変更の確認待ちと記録</dt><dd><ul><li>スタッフが予約のキャンセル・日時や担当の変更・確定した会計の取り消しをするときは、<b>理由を選んで申し出て、オーナーが認めると反映します</b>。それまで予約は元のまま残ります。</li><li>理由は、キャンセルなら「お客様のご都合（前日まで）・当日のキャンセル・ご連絡なし・入力の間違い」など、変更なら「お客様のご都合・お店の都合・入力の間違い・担当の交代」などから選びます。</li><li>オーナーは、ホームの「確認待ち」の一覧で、誰が・どの予約を・どう変えたいか・理由を見て「認める」か「認めない」を押します。オーナー自身の操作は確認なしで反映します。</li><li>確認が要る操作は、オーナーが設定で操作ごとに外せます。</li><li>サロンボードでのキャンセルや日時の変更も、取り込みのときにオーナーが認めてからアプリに反映します。</li><li>キャンセル料は、キャンセルを認めたあとに会計で入れられます。</li><li>会計の直しは「取り消して入れ直す」形で、<b>前の内容が残ります</b>。</li><li>申し出・認めた・認めなかったも含めて、誰が・いつ・何をしたかを、オーナーが見られます。</li></ul></dd></div>
 <div><dt>カルテ・メニュー・店販の商品</dt><dd><ul><li>お客様ごとのメモと来店履歴（いつ・何を・担当・いくら）を残せます。</li><li>メニューはサロンボードと同じ形（スタッフ料金とオーナー料金を分けたまま）で、店販の商品と値段も登録できます。</li><li>料金は「いつから新しい料金か」を決めて登録します。<b>値上げの日より前の予約は約束した金額のまま</b>で、過去の売上・来店履歴・精算書の金額も変わりません。</li></ul></dd></div>
+<div id="f-notice"><dt>お知らせのメール・更新のお知らせ・ご意見</dt><dd><ul><li>オーナーは設定で、<b>確認待ちや会計まだの件数をメールで受け取れます</b>。申し出のたびにすぐ届くか、1日1回のまとめ（時刻を選べます）かを選べ、知らせることが無い日は届きません。メールには件数とアプリを開くリンクだけを載せ、お客様のお名前や金額は載せません。</li><li>アプリを直したときは、設定の「更新のお知らせ」に<b>日付と何が変わったか</b>を載せます。更新のあと最初に開いたときは、ホームにも1行出ます。</li><li><b>オーナーもスタッフも、アプリから「ご意見・不具合」を送れます</b>。種類（不具合・使いにくい・こうしてほしい）を選んで書き、画面の写真も付けられます。見られるのは、送った本人・オーナー・開発者です。</li><li>送ったご意見は、受け付け・直した・ご相談中などの状況とともに残ります。直したものは更新のお知らせとつながり、今後の改善の材料にします。</li></ul></dd></div>
 </dl>
 </section>
 
@@ -512,8 +513,8 @@ legend { padding: 0; font-weight: 600; }
 <div><dt>会計の入力の一本化</dt><dd>税理士さんへお渡ししている売上はサロンボードから出しているため、キャッシュレスのお客様の会計は、これまでどおりサロンボードにも入れていただきます。</dd></div>
 <div><dt>シフトと営業時間の一本化</dt><dd>ネット予約に関わる分は、これまでどおりサロンボードでも設定をお願いします。</dd></div>
 <div><dt>アプリに入れなかった来店の発見</dt><dd>見つけられるのは、サロンボードに予約があって、アプリで会計がないもの（キャッシュレスのお客様の会計漏れ）までです。現金のお客様の予約もアプリに入れることを、お店の決まりにしていただくのが前提です。</dd></div>
-<div><dt>確認待ちのお知らせ</dt><dd>メールやスマホへの通知は出ません。ホームに件数が出るので、閉店のあとなど1日1回、一覧を見ていただく形です。</dd></div>
-<div><dt>今回は作らないもの</dt><dd>ネット予約の受付ページ、LINE 連携、カード決済そのもの、在庫管理、給与計算、会計ソフト向けの書き出し、お客様向けの領収書・レシートの発行、予約のお知らせ（メール）、回数券・前払いの残高の管理。</dd></div>
+<div><dt>スマホへの通知</dt><dd>アプリを閉じているときに、スマホの画面に通知を出すことはしません。オーナーへのお知らせはメール（設定で選べます）、スタッフへはアプリのホームで出します。</dd></div>
+<div><dt>今回は作らないもの</dt><dd>ネット予約の受付ページ、LINE 連携、カード決済そのもの、在庫管理、給与計算、会計ソフト向けの書き出し、お客様向けの領収書・レシートの発行、お客様への予約のお知らせ（メール）、回数券・前払いの残高の管理。</dd></div>
 </dl>
 </section>
 
@@ -549,13 +550,15 @@ legend { padding: 0; font-weight: 600; }
 <tr><td class="no">6</td><td>シフトと日ごとの営業時間</td><td class="num">2</td><td class="num">5,000円</td></tr>
 <tr><td class="no">7</td><td>ログイン、見られる範囲、操作の記録、キャンセル・変更の確認待ち、お店の iPad の切り替え</td><td class="num">2</td><td class="num">10,000円</td></tr>
 <tr><td class="no">8</td><td>カルテ、メニューと店販の商品、支払い方法の管理</td><td class="num">3</td><td class="num">10,000円</td></tr>
-<tr class="total"><td class="no"></td><td>計</td><td class="num">17</td><td class="num">100,000円</td></tr>
+<tr><td class="no">9</td><td>お知らせのメール、更新のお知らせ、ご意見・不具合の送信</td><td class="num">2</td><td class="num">0円（お付けします）</td></tr>
+<tr class="total"><td class="no"></td><td>計</td><td class="num">19</td><td class="num">100,000円</td></tr>
 </tbody>
 </table>
 </div>
-<p class="muted small">操作の説明書（画面つき。よくある困りごとと直し方も載せます）づくりも、この金額に入っています。</p>
+<p class="muted small">操作の説明書（画面つき。よくある困りごとと直し方も載せます）づくりも、この金額に入っています。お知らせのメール・更新のお知らせ・ご意見の送信は、納品後の不具合の対応を早く確かに行うための仕組みなので、金額に足さずにお付けします。</p>
 <h4>1.5.3 この金額とは別にかかるもの</h4>
 <p><b>かかるのは、アプリを動かす場所の費用だけで、この規模なら無料の範囲に収まる見込みです。</b> 登録はお店の名義（お店のメールアドレス）で行い、手順はご案内します。使う量が増えて無料の範囲を超えたときだけ、お店から直接お支払いいただきます（月2,000円ほどまでの見込みです）。</p>
+<p>お知らせのメールを使うときは、メールの送り元にお店のドメイン（インターネット上の住所）が要る見込みで、年1,500円ほどかかります。こちらもお店の名義で取り、手順はご案内します。メールを使わないときは要りません。</p>
 <p>月々の保守費用はいただきません。次の変更は、お店側で画面からできる作りにします。</p>
 <ul>
 <li>メニューの追加・料金の変更・値上げの日の設定</li>
@@ -585,7 +588,7 @@ legend { padding: 0; font-weight: 600; }
 <h3>1.6 品質と保証</h3>
 <ol class="ruled n">
 <li><b>納品は、一緒に確かめてからにします。</b> 決めた機能の一覧に沿って動くことを確かめていただいてから納品とします。</li>
-<li><b>不具合は、納品後6か月は無償で直します。</b> 「決めたとおりに動かない」ものが不具合です。ご連絡をいただいたら、原則2〜3日以内に状況をお知らせし、営業が止まるような不具合は優先して直します。</li>
+<li><b>不具合は、納品後6か月は無償で直します。</b> 「決めたとおりに動かない」ものが不具合です。アプリの「ご意見・不具合を送る」からご連絡いただければ、どの画面のことかがこちらに伝わります。原則2〜3日以内に状況をお知らせし、営業が止まるような不具合は優先して直します（急ぎのときは直接ご連絡ください）。直したら「更新のお知らせ」に載せます。アプリでエラーが起きたときは、お客様の情報を除いた記録がこちらに届くので、ご連絡の前に気づけることもあります。</li>
 <li><b>入力の間違いは、お店側で直せる作りにします。</b> 予約・会計・メニューなどの入力の直しは、アプリの画面からできます。困ったときは、控えのデータから戻す作業も、納品後6か月の間はお手伝いします。</li>
 <li><b>大きな仕様の変更や機能の追加は、別にご相談します。</b> 納品後6か月の間は、サロンボードのファイルの形やアプリを動かす場所のサービスが変わったときも、小さな直しで済むものは保証の中で直します。大きな作り直しになるときと、納品後7か月目以降の直しは、ご相談のうえ、その都度お見積もりします。</li>
 <li><b>プログラムとデータをお渡しします。</b> ほかの開発者にも引き継げる形でお渡しします。</li>
@@ -650,6 +653,7 @@ legend { padding: 0; font-weight: 600; }
 <div class="mc alert"><div class="row"><b>会計まだの予約</b><span class="tag warn">1件</span></div><div class="muted small">閉店前にここが0件なら、今日の会計はすべて済んでいます</div></div>
 <div class="mc only-owner js-appr"><div class="row"><b>確認待ち</b><span class="tag warn js-apn">3件</span></div><div class="apr"><div class="small"><b>岸</b>：中村 様 11/20（金）15:00 の予約をキャンセル</div><div class="muted small">理由：お客様のご都合（前日まで）　申し出 11/20 15:42</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div><div class="apr"><div class="small"><b>吉留</b>：松本 様 11/22（日）11:00 を 11/26（木）14:00 に変更</div><div class="muted small">理由：お客様のご都合　申し出 11/20 11:10</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div><div class="apr"><div class="small"><b>岸</b>：山本 様の会計（¥7,700・現金）を取り消し</div><div class="muted small">理由：入力の間違い　申し出 11/20 12:30</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div></div>
 <div class="mc only-staff"><div class="row"><b>申し出の結果</b><span class="tag ok">認められました</span></div><div class="muted small">森 様 12/2（水）11:00 → 12/9（水）11:00 の変更（11/19 深谷）</div></div>
+<div class="mc flat"><div class="row"><b>更新しました（11/18）</b><span class="tag info">1.0.3</span></div><div class="muted small">精算書の印刷で、2ページ目の見出しが抜けていたのを直しました</div></div>
 <p class="m-sec">今日 11月20日（金）の自分の予約</p>
 <div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">カット＋指名料 ¥10,700</span></span><span class="tag ok">会計済み</span></div></div>
 <div class="mc"><div class="resv"><span class="t">13:30</span><span><span class="who">伊藤 様</span><br><span class="muted">カット＆カラー ¥15,950</span></span><span class="tag warn">会計まだ</span></div></div>
@@ -759,6 +763,10 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>11/20（金）</td><td>10:00〜19:00</td></tr><tr><td>11/21（土）</td><td>10:00〜20:00</td></tr><tr><td>11/22（日）</td><td>10:00〜19:00</td></tr><tr><td>11/23（月）</td><td class="off">店休日</td></tr><tr><td>11/24（火）</td><td class="off">店休日</td></tr><tr><td>11/25（水）</td><td class="off">休み</td></tr><tr><td>11/26（木）</td><td>12:00〜20:00</td></tr>
 </tbody></table></div>
 <div class="mc flat" style="margin-top:var(--space-xs);"><div class="small">メニュー・料金・歩合の率・営業時間の変更は、オーナーの画面からできます</div></div>
+<p class="m-sec">自分が送ったご意見</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>11/10 使いにくい</td><td>週の表で、休みの人の列を細くしてほしい</td><td><span class="tag ok">直しました</span></td></tr>
+</tbody></table></div>
 </div>
 <div class="only-owner">
 <p class="m-sec">営業時間（12月で、いつもと違う日）</p>
@@ -790,6 +798,17 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>予約の日時・担当の変更</td><td>確認が要る</td></tr>
 <tr><td>確定した会計の取り消し</td><td>確認が要る</td></tr>
 </tbody></table></div>
+<p class="m-sec">メールでのお知らせ</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>送り先</td><td>深谷様のメールアドレス</td></tr>
+<tr><td>確認待ちの申し出</td><td>1日1回のまとめに入れる</td></tr>
+<tr><td>1日1回のまとめ</td><td>21:00（知らせることが無い日は送りません）</td></tr>
+</tbody></table><button type="button" class="m-btn sub">試しに送る</button></div>
+<p class="m-sec">スタッフからのご意見</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>11/20 岸</td><td>不具合：会計の画面で、併用払いの2つ目の金額が入れられない</td><td><span class="tag warn">受け付けました</span></td></tr>
+<tr><td>11/10 吉留</td><td>使いにくい：週の表で、休みの人の列を細くしてほしい</td><td><span class="tag ok">直しました</span></td></tr>
+</tbody></table></div>
 <p class="m-sec">操作の記録（新しい順）</p>
 <div class="mc"><table class="mini"><tbody>
 <tr><td>11/20 15:42</td><td>岸：中村様の予約のキャンセルを申し出（理由：お客様のご都合（前日まで））</td></tr>
@@ -799,6 +818,22 @@ legend { padding: 0; font-weight: 600; }
 </tbody></table></div>
 <button type="button" class="m-btn sub">メニュー・料金を開く</button>
 </div>
+<div id="fbBox">
+<p class="m-sec">ご意見・不具合を送る</p>
+<div class="mc">
+<div class="chips" role="group" aria-label="ご意見の種類"><button type="button" class="chip" aria-pressed="true">不具合</button><button type="button" class="chip" aria-pressed="false">使いにくい</button><button type="button" class="chip" aria-pressed="false">こうしてほしい</button><button type="button" class="chip" aria-pressed="false">その他</button></div>
+<div class="mc flat" style="margin:var(--space-xs) 0;"><div class="small">会計の画面で、併用払いの2つ目の金額が入れられない</div></div>
+<button type="button" class="m-btn sub">画面の写真を付ける</button>
+<button type="button" class="m-btn">送る</button>
+<p class="muted small" style="margin-top:var(--space-xs);">見られるのは、送った本人・オーナー・開発者です。開いていた画面とアプリの版も一緒に届きます。</p>
+</div>
+</div>
+<p class="m-sec">更新のお知らせ</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>11/18　1.0.3</td><td>精算書の印刷で、2ページ目の見出しが抜けていたのを直しました（不具合の直し）</td></tr>
+<tr><td>11/12　1.0.2</td><td>週の表で、休みの人の列を細くしました（ご意見から）</td></tr>
+<tr><td>11/5　1.0.1</td><td>サロンボードの取り込みで、半角の空白が入った名前も同じ方と見るようにしました（不具合の直し）</td></tr>
+</tbody></table></div>
 </section>
 
 </div>
@@ -989,6 +1024,7 @@ legend { padding: 0; font-weight: 600; }
 <p class="m-sec" style="margin-top:0;"><span class="js-opname">岸</span>さんのシフト（今週）</p>
 <div class="mc" style="max-width:420px;"><table class="mini"><tbody id="isetMine"></tbody></table></div>
 <p class="muted small" style="margin-top:var(--space-xs);">メニュー・料金・歩合の率・営業時間は、オーナーに切り替えると変えられます</p>
+<button type="button" class="m-btn sub" style="max-width:420px;">ご意見・不具合を送る</button>
 </div>
 <div class="pcards pad-owner">
 <div>
@@ -1029,6 +1065,20 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>予約の日時・担当の変更</td><td>確認が要る</td></tr>
 <tr><td>確定した会計の取り消し</td><td>確認が要る</td></tr>
 </tbody></table></div>
+</div>
+<div>
+<p class="m-sec">メールでのお知らせ</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>確認待ちの申し出</td><td>1日1回のまとめに入れる</td></tr>
+<tr><td>1日1回のまとめ</td><td>21:00</td></tr>
+</tbody></table><button type="button" class="m-btn sub">試しに送る</button></div>
+</div>
+<div>
+<p class="m-sec">ご意見と更新のお知らせ</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>11/20 岸</td><td>不具合：併用払いの2つ目の金額が入れられない</td><td><span class="tag warn">受け付けました</span></td></tr>
+<tr><td>11/18　1.0.3</td><td>精算書の印刷の見出しを直しました</td><td><span class="tag info">更新</span></td></tr>
+</tbody></table><button type="button" class="m-btn sub">ご意見・不具合を送る</button></div>
 </div>
 <div>
 <p class="m-sec">操作の記録（新しい順）</p>
