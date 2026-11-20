@@ -282,6 +282,12 @@ html:not(.js) .vlabel { display: block; font-weight: 600; margin-bottom: var(--s
 .lanes .b.paid { background: var(--color-ok-bg); border-color: var(--color-ok); }
 .lanes .b.unpaid { background: var(--color-warn-bg); border-color: var(--color-warn); }
 .lanes .b.clash { border: 2px solid var(--color-warn); }
+.lanes .b.pend { border-style: dashed; }
+.legend .lq::before { border: 2px dashed var(--color-warn); background: var(--color-surface); }
+.apr { border-top: var(--rule-hair) solid var(--color-rule); padding-top: var(--space-xs); margin-top: var(--space-xs); }
+.apr .acts { display: flex; gap: var(--space-xs); }
+.apr .acts .m-btn { margin-top: var(--space-xs); min-height: 40px; }
+.apr .res { margin-top: var(--space-2xs); font-weight: 600; font-size: var(--text-xs); }
 .legend { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-sm); font-size: var(--text-xs); color: var(--color-muted); }
 .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: var(--space-2xs); vertical-align: -1px; border: var(--rule-hair) solid var(--color-accent); background: var(--color-accent-soft); }
 .legend .lp::before { border-color: var(--color-ok); background: var(--color-ok-bg); }
@@ -432,7 +438,7 @@ legend { padding: 0; font-weight: 600; }
 <ol class="ruled n">
 <li><b>予約の台帳はアプリに置きます。</b> 予約の入口はこれまでどおりサロンボードのままで、各スタッフが LiME で持っている先の予約も、6か月先までアプリにまとめられます。</li>
 <li><b>歩合の精算まで自動で計算します。</b> 現金の分は「スタッフからお店へ渡す額」、キャッシュレスの分は「お店からスタッフへ払う額（手数料を引いた後）」を、スタッフごと・月ごとの精算書にします。いまの請求書の元にできます（インボイスの登録番号や消費税の額を載せる形にも、この金額の中で合わせます）。</li>
-<li><b>あとから消せない記録にします。</b> 予約は消せず、会計の直しも履歴に残ります。締めた月はオーナーしか直せません。</li>
+<li><b>あとから消せない記録にします。</b> 予約は消せず、会計の直しも履歴に残ります。スタッフのキャンセルや日時の変更は、<b>オーナーが確かめてから</b>変わります。締めた月はオーナーしか直せません。</li>
 </ol>
 </section>
 
@@ -490,10 +496,10 @@ legend { padding: 0; font-weight: 600; }
 <div id="f-pay"><dt>会計と会計チェック</dt><dd><ul><li>予約からそのまま会計へ進み、技術と店販を分けて入れます。</li><li>支払い方法は現金・クレジットカード・ホットペッパーのポイント・楽天ペイ・au PAY・交通系IC・iD/QUICPay から選び、<b>2つの方法の併用</b>もできます。</li><li>会計まだの予約は、<b>日が過ぎてもオーナーの画面の一覧に残ります</b>。</li><li>予約の金額と違うときは、<b>理由を1タップで残せます</b>（料金の調整・割引・メニュー変更・店販の追加など）。予約の金額はメニューから入るので、サロンボードでは空欄になりがちな電話予約も比べられます。</li><li>店販だけのお客様は、予約なしで会計できます。</li></ul></dd></div>
 <div id="f-settle"><dt>歩合と月末の精算書</dt><dd><ul><li>スタッフごとに、技術・店販・キャッシュレス手数料の率を設定します。率は変える日を決めて登録でき、<b>変えても過去の精算は変わりません</b>。</li><li>月末に、<b>現金の分・キャッシュレスの分・その差し引き</b>を精算書にします。</li><li>オーナーが<b>月を締めると確定</b>し、印刷と書き出しができます。締めた月のあとで返金したときは、返金した月の精算で差し引きます。</li></ul></dd></div>
 <div><dt>売上</dt><dd><ul><li><b>スタッフは自分の売上だけ</b>、オーナーは全員分を見られます。</li><li>表計算ソフトで開けるファイルに書き出せます。</li></ul></dd></div>
-<div id="f-import"><dt>サロンボードからの取り込み</dt><dd><ul><li>サロンボードの予約のファイルを取り込み、日付・時刻・担当・お名前でアプリの予約と照らし合わせます。<b>同じ予約は二重に入れません。</b></li><li><b>サロンボードに未入力の予約</b>、時間や担当が違う予約、時間の重なりを一覧で出します。</li><li>サロンボードでのキャンセルや日時の変更は、アプリにも反映します（迷うものは一覧に出します）。</li><li>同じファイルで、<b>キャッシュレスの会計の金額</b>がアプリと合っているかも確かめます。</li></ul></dd></div>
+<div id="f-import"><dt>サロンボードからの取り込み</dt><dd><ul><li>サロンボードの予約のファイルを取り込み、日付・時刻・担当・お名前でアプリの予約と照らし合わせます。<b>同じ予約は二重に入れません。</b></li><li><b>サロンボードに未入力の予約</b>、時間や担当が違う予約、時間の重なりを一覧で出します。</li><li>サロンボードでのキャンセルや日時の変更は、オーナーが認めるとアプリにも反映します（迷うものは一覧に出します）。</li><li>同じファイルで、<b>キャッシュレスの会計の金額</b>がアプリと合っているかも確かめます。</li></ul></dd></div>
 <div><dt>シフトと営業時間</dt><dd><ul><li>スタッフごとに出勤の型を決め、日ごとに変えられます。</li><li>開店・閉店時間や臨時休業は、月のカレンダーで変えられます。</li><li>休みのスタッフや営業時間の外に予約を入れようとしたときは、<b>お知らせします</b>。</li></ul></dd></div>
 <div><dt>ログインと見られる範囲</dt><dd><ul><li>スタッフごとに自分のログインを持ちます。お店の iPad は何人かで使うので、画面の上の「操作する人」を4桁の番号で切り替えます。</li><li>スタッフは、<b>ほかのスタッフの金額・売上・精算書を見られません</b>。お客様の一覧の書き出しは、オーナーだけができます。</li><li>画面のロックは、iPhone の画面ロック（顔認証・パスコード）とアプリのログインの2重です。iPhone をなくしたときやスタッフが辞めたときは、<b>オーナーの画面からその人のログインを止められます</b>（記録は残ります）。</li></ul></dd></div>
-<div><dt>キャンセルと直しの記録</dt><dd><ul><li>キャンセルは、<b>理由を残さないとできません</b>（お客様のご都合・当日・ご連絡なしなど）。キャンセル料は会計で入れられます。</li><li>会計を確定したあとの直しは「取り消して入れ直す」形で、<b>前の内容が残ります</b>。</li><li>誰が・いつ・何をしたかを、オーナーが見られます。</li></ul></dd></div>
+<div id="f-approve"><dt>キャンセル・変更の確認待ちと記録</dt><dd><ul><li>スタッフが予約のキャンセル・日時や担当の変更・確定した会計の取り消しをするときは、<b>理由を選んで申し出て、オーナーが認めると反映します</b>。それまで予約は元のまま残ります。</li><li>理由は、キャンセルなら「お客様のご都合（前日まで）・当日のキャンセル・ご連絡なし・入力の間違い」など、変更なら「お客様のご都合・お店の都合・入力の間違い・担当の交代」などから選びます。</li><li>オーナーは、ホームの「確認待ち」の一覧で、誰が・どの予約を・どう変えたいか・理由を見て「認める」か「認めない」を押します。オーナー自身の操作は確認なしで反映します。</li><li>確認が要る操作は、オーナーが設定で操作ごとに外せます。</li><li>サロンボードでのキャンセルや日時の変更も、取り込みのときにオーナーが認めてからアプリに反映します。</li><li>キャンセル料は、キャンセルを認めたあとに会計で入れられます。</li><li>会計の直しは「取り消して入れ直す」形で、<b>前の内容が残ります</b>。</li><li>申し出・認めた・認めなかったも含めて、誰が・いつ・何をしたかを、オーナーが見られます。</li></ul></dd></div>
 <div><dt>カルテ・メニュー・店販の商品</dt><dd><ul><li>お客様ごとのメモと来店履歴（いつ・何を・担当・いくら）を残せます。</li><li>メニューはサロンボードと同じ形（スタッフ料金とオーナー料金を分けたまま）で、店販の商品と値段も登録できます。</li><li>料金は「いつから新しい料金か」を決めて登録します。<b>値上げの日より前の予約は約束した金額のまま</b>で、過去の売上・来店履歴・精算書の金額も変わりません。</li></ul></dd></div>
 </dl>
 </section>
@@ -506,6 +512,7 @@ legend { padding: 0; font-weight: 600; }
 <div><dt>会計の入力の一本化</dt><dd>税理士さんへお渡ししている売上はサロンボードから出しているため、キャッシュレスのお客様の会計は、これまでどおりサロンボードにも入れていただきます。</dd></div>
 <div><dt>シフトと営業時間の一本化</dt><dd>ネット予約に関わる分は、これまでどおりサロンボードでも設定をお願いします。</dd></div>
 <div><dt>アプリに入れなかった来店の発見</dt><dd>見つけられるのは、サロンボードに予約があって、アプリで会計がないもの（キャッシュレスのお客様の会計漏れ）までです。現金のお客様の予約もアプリに入れることを、お店の決まりにしていただくのが前提です。</dd></div>
+<div><dt>確認待ちのお知らせ</dt><dd>メールやスマホへの通知は出ません。ホームに件数が出るので、閉店のあとなど1日1回、一覧を見ていただく形です。</dd></div>
 <div><dt>今回は作らないもの</dt><dd>ネット予約の受付ページ、LINE 連携、カード決済そのもの、在庫管理、給与計算、会計ソフト向けの書き出し、お客様向けの領収書・レシートの発行、予約のお知らせ（メール）、回数券・前払いの残高の管理。</dd></div>
 </dl>
 </section>
@@ -540,9 +547,9 @@ legend { padding: 0; font-weight: 600; }
 <tr><td class="no">4</td><td>売上の集計と書き出し（自分の分と全員分）</td><td class="num">1</td><td class="num">10,000円</td></tr>
 <tr><td class="no">5</td><td>サロンボードからの取り込み（照らし合わせ、キャンセル・変更の反映、未入力の一覧、時間の重なりの一覧、キャッシュレスの金額の確かめ）</td><td class="num">1</td><td class="num">10,000円</td></tr>
 <tr><td class="no">6</td><td>シフトと日ごとの営業時間</td><td class="num">2</td><td class="num">5,000円</td></tr>
-<tr><td class="no">7</td><td>ログイン、見られる範囲、操作の記録、お店の iPad の切り替え</td><td class="num">1</td><td class="num">10,000円</td></tr>
+<tr><td class="no">7</td><td>ログイン、見られる範囲、操作の記録、キャンセル・変更の確認待ち、お店の iPad の切り替え</td><td class="num">2</td><td class="num">10,000円</td></tr>
 <tr><td class="no">8</td><td>カルテ、メニューと店販の商品、支払い方法の管理</td><td class="num">3</td><td class="num">10,000円</td></tr>
-<tr class="total"><td class="no"></td><td>計</td><td class="num">16</td><td class="num">100,000円</td></tr>
+<tr class="total"><td class="no"></td><td>計</td><td class="num">17</td><td class="num">100,000円</td></tr>
 </tbody>
 </table>
 </div>
@@ -641,6 +648,8 @@ legend { padding: 0; font-weight: 600; }
 <section class="view on" id="v-home" aria-label="ホーム">
 <p class="vlabel">ホーム</p>
 <div class="mc alert"><div class="row"><b>会計まだの予約</b><span class="tag warn">1件</span></div><div class="muted small">閉店前にここが0件なら、今日の会計はすべて済んでいます</div></div>
+<div class="mc only-owner js-appr"><div class="row"><b>確認待ち</b><span class="tag warn js-apn">3件</span></div><div class="apr"><div class="small"><b>岸</b>：中村 様 11/20（金）15:00 の予約をキャンセル</div><div class="muted small">理由：お客様のご都合（前日まで）　申し出 11/20 15:42</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div><div class="apr"><div class="small"><b>吉留</b>：松本 様 11/22（日）11:00 を 11/26（木）14:00 に変更</div><div class="muted small">理由：お客様のご都合　申し出 11/20 11:10</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div><div class="apr"><div class="small"><b>岸</b>：山本 様の会計（¥7,700・現金）を取り消し</div><div class="muted small">理由：入力の間違い　申し出 11/20 12:30</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div></div>
+<div class="mc only-staff"><div class="row"><b>申し出の結果</b><span class="tag ok">認められました</span></div><div class="muted small">森 様 12/2（水）11:00 → 12/9（水）11:00 の変更（11/19 深谷）</div></div>
 <p class="m-sec">今日 11月20日（金）の自分の予約</p>
 <div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">カット＋指名料 ¥10,700</span></span><span class="tag ok">会計済み</span></div></div>
 <div class="mc"><div class="resv"><span class="t">13:30</span><span><span class="who">伊藤 様</span><br><span class="muted">カット＆カラー ¥15,950</span></span><span class="tag warn">会計まだ</span></div></div>
@@ -660,7 +669,19 @@ legend { padding: 0; font-weight: 600; }
 <p class="m-sec">席の使われ方：13時台 3席のうち2席</p>
 <div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">10:30〜12:00 カット＋指名料</span></span><span class="tag ok">会計済み</span></div></div>
 <div class="mc"><div class="resv"><span class="t">13:30</span><span><span class="who">伊藤 様</span><br><span class="muted">13:30〜15:30 カット＆カラー／現金</span></span><span class="tag warn">会計まだ</span></div></div>
-<div class="mc"><div class="resv"><span class="t">16:00</span><span><span class="who">渡辺 様</span><br><span class="muted">16:00〜17:00 ヘアカット</span></span><span class="tag">予約</span></div></div>
+<div class="mc"><div class="resv"><span class="t">16:00</span><span><span class="who">渡辺 様</span><br><span class="muted">16:00〜17:00 ヘアカット</span></span><span class="tag" id="wtTag">予約</span></div></div>
+<p class="m-sec">渡辺 様の予約を開いたところ</p>
+<div class="mc" id="rq">
+<div class="pbtns"><button type="button" class="m-btn sub js-live" data-mode="change"><span class="only-staff">日時・担当の変更を申し出る</span><span class="only-owner">日時・担当を変える</span></button><button type="button" class="m-btn sub js-live" data-mode="cancel"><span class="only-staff">キャンセルを申し出る</span><span class="only-owner">キャンセルする</span></button></div>
+<div id="rqForm" hidden>
+<div class="small" id="rqNew" style="margin-top:var(--space-xs);">新しい日時：11月27日（金）16:00〜17:00　担当 吉留</div>
+<div class="chips" id="rqCancel" role="group" aria-label="キャンセルの理由"><button type="button" class="chip" aria-pressed="false">お客様のご都合（前日まで）</button><button type="button" class="chip" aria-pressed="false">当日のキャンセル</button><button type="button" class="chip" aria-pressed="false">ご連絡なし</button><button type="button" class="chip" aria-pressed="false">入力の間違い</button><button type="button" class="chip" aria-pressed="false">その他</button></div>
+<div class="chips" id="rqChange" role="group" aria-label="変更の理由" hidden><button type="button" class="chip" aria-pressed="false">お客様のご都合</button><button type="button" class="chip" aria-pressed="false">お店の都合</button><button type="button" class="chip" aria-pressed="false">入力の間違い</button><button type="button" class="chip" aria-pressed="false">担当の交代</button><button type="button" class="chip" aria-pressed="false">その他</button></div>
+<button type="button" class="m-btn js-live" id="rqSend" disabled><span class="only-staff">オーナーに確認を出す</span><span class="only-owner">この内容で反映する</span></button>
+<p class="muted small" id="rqHint" style="margin-top:var(--space-xs);">理由を選ぶと出せます</p>
+</div>
+<div class="diff" id="rqDone" hidden></div>
+</div>
 <div class="mc flat"><b>入れるときに知らせること</b><div class="muted small">同じスタッフの時間の重なり、3席を超える時間、休みや営業時間の外。入れるかどうかは最後に人が選べます</div></div>
 <button type="button" class="m-btn">＋ 予約を入れる</button>
 <button type="button" class="m-btn sub">日付と担当を引き継いで続けて入れる</button>
@@ -763,10 +784,17 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>クレジットカード・楽天ペイ・au PAY・交通系IC・iD・QUICPay</td><td>お店（手数料の対象）</td></tr>
 <tr><td>ホットペッパーのポイント</td><td>お店（手数料はご確認中）</td></tr>
 </tbody></table></div>
+<p class="m-sec">スタッフの操作でオーナーの確認が要るもの</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>予約のキャンセル</td><td>確認が要る</td></tr>
+<tr><td>予約の日時・担当の変更</td><td>確認が要る</td></tr>
+<tr><td>確定した会計の取り消し</td><td>確認が要る</td></tr>
+</tbody></table></div>
 <p class="m-sec">操作の記録（新しい順）</p>
 <div class="mc"><table class="mini"><tbody>
-<tr><td>11/20 15:42</td><td>岸：中村様の予約をキャンセル（理由：お客様の体調）</td></tr>
+<tr><td>11/20 15:42</td><td>岸：中村様の予約のキャンセルを申し出（理由：お客様のご都合（前日まで））</td></tr>
 <tr><td>11/20 12:05</td><td>吉留：高橋様の会計を確定</td></tr>
+<tr><td>11/19 20:05</td><td>深谷：森様の日時の変更を認めた（12/2→12/9）</td></tr>
 <tr><td>11/19 19:31</td><td>深谷：サロンボードの予約を取り込み（新しく6件）</td></tr>
 </tbody></table></div>
 <button type="button" class="m-btn sub">メニュー・料金を開く</button>
@@ -838,12 +866,13 @@ legend { padding: 0; font-weight: 600; }
 <div class="b unpaid" style="grid-column:3;grid-row:9 / 13;"><b>伊藤 様</b>13:30 カット＆カラー 会計まだ</div>
 <div class="b" style="grid-column:3;grid-row:14 / 16;"><b>渡辺 様</b>16:00 ヘアカット</div>
 <div class="b" style="grid-column:4;grid-row:4 / 7;"><b>山本 様</b>11:00 カット</div>
-<div class="b clash" style="grid-column:4;grid-row:12 / 14;"><b>中村 様</b>15:00 重なり</div>
+<div class="b clash pend" style="grid-column:4;grid-row:12 / 14;"><b>中村 様</b>15:00 キャンセル確認待ち</div>
 <div class="b clash" style="grid-column:4;grid-row:13 / 15;margin-left:40%;"><b>小林 様</b>15:30 ネット予約</div>
 </div>
 </div>
-<div class="legend"><span>予約</span><span class="lp">会計済み</span><span class="lu">会計まだ</span><span class="lc">時間の重なり</span><span class="lo">休み</span></div>
+<div class="legend"><span>予約</span><span class="lp">会計済み</span><span class="lu">会計まだ</span><span class="lc">時間の重なり</span><span class="lq">確認待ち</span><span class="lo">休み</span></div>
 <p class="muted small" style="margin-top:var(--space-xs);">予約を押すと、変更・会計・キャンセルができます。誤って動かさないよう、指でずらす操作は入れません。</p>
+<div class="mc pad-owner js-appr" style="margin-top:var(--space-sm);max-width:560px;"><div class="row"><b>確認待ち</b><span class="tag warn js-apn">3件</span></div><div class="apr"><div class="small"><b>岸</b>：中村 様 11/20（金）15:00 の予約をキャンセル</div><div class="muted small">理由：お客様のご都合（前日まで）　申し出 11/20 15:42</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div><div class="apr"><div class="small"><b>吉留</b>：松本 様 11/22（日）11:00 を 11/26（木）14:00 に変更</div><div class="muted small">理由：お客様のご都合　申し出 11/20 11:10</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div><div class="apr"><div class="small"><b>岸</b>：山本 様の会計（¥7,700・現金）を取り消し</div><div class="muted small">理由：入力の間違い　申し出 11/20 12:30</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div></div>
 </section>
 
 <section class="view" id="p-week" aria-label="週の表">
@@ -873,6 +902,8 @@ legend { padding: 0; font-weight: 600; }
 </div>
 <p class="m-sec" style="margin-top:var(--space-md);">時間の重なり</p>
 <div class="mc alert"><div class="row"><span><b>11/20（金）15:00〜16:30 岸</b><br>中村 様（アプリ）と 小林 様（ネット予約）</span><span class="tag warn">要対応</span></div></div>
+<p class="m-sec">サロンボードで変わった予約（認めるとアプリに反映）</p>
+<div class="mc js-appr"><div class="row"><b>11/21（土）12:00 吉留　堀 様</b><span class="tag warn js-apn">1件</span></div><div class="apr"><div class="small">サロンボードで「お客様キャンセル」になっています</div><div class="acts"><button type="button" class="m-btn js-live" data-a="ok">認める</button><button type="button" class="m-btn sub js-live" data-a="ng">認めない</button></div></div></div>
 <p class="m-sec">12月分でサロンボードに未入力の予約（14件のうち3件）</p>
 <div class="mc"><table class="mini"><thead><tr><th>日時</th><th>担当</th><th>お客様</th><th>メニュー</th><th class="num">金額</th></tr></thead><tbody>
 <tr><td>12/2（水）11:00</td><td>吉留</td><td>森 様</td><td>カット＆カラー</td><td class="num">¥15,950</td></tr>
@@ -992,10 +1023,19 @@ legend { padding: 0; font-weight: 600; }
 </tbody></table></div>
 </div>
 <div>
+<p class="m-sec">スタッフの操作でオーナーの確認が要るもの</p>
+<div class="mc"><table class="mini"><tbody>
+<tr><td>予約のキャンセル</td><td>確認が要る</td></tr>
+<tr><td>予約の日時・担当の変更</td><td>確認が要る</td></tr>
+<tr><td>確定した会計の取り消し</td><td>確認が要る</td></tr>
+</tbody></table></div>
+</div>
+<div>
 <p class="m-sec">操作の記録（新しい順）</p>
 <div class="mc"><table class="mini"><tbody>
-<tr><td>11/20 15:42</td><td>岸：中村様の予約をキャンセル（理由：お客様の体調）</td></tr>
+<tr><td>11/20 15:42</td><td>岸：中村様の予約のキャンセルを申し出（理由：お客様のご都合（前日まで））</td></tr>
 <tr><td>11/20 12:05</td><td>吉留：高橋様の会計を確定</td></tr>
+<tr><td>11/19 20:05</td><td>深谷：森様の日時の変更を認めた（12/2→12/9）</td></tr>
 <tr><td>11/19 19:31</td><td>深谷：サロンボードの予約を取り込み（新しく6件）</td></tr>
 <tr><td>11/19 18:10</td><td>深谷：12月の営業時間を変更（12/29 臨時営業）</td></tr>
 </tbody></table></div>
@@ -1241,6 +1281,7 @@ document.documentElement.classList.add("js");
       app.dataset.role = b.dataset.role;
       $$(".role button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
       if (b.dataset.role === "staff") { renderPhoneSettle("yoshidome"); setPressed("#settleStaff", "yoshidome"); }
+      rqReset();
     });
   });
   function setPressed(sel, key) { $$(sel + " button[data-staff]").forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.staff === key)); }); }
@@ -1249,7 +1290,7 @@ document.documentElement.classList.add("js");
   var toastTimer;
   $$(".scr, .pad").forEach(function (frame) {
     frame.addEventListener("click", function (e) {
-      var b = e.target.closest(".m-btn, .datebar button"); if (!b || b.disabled) return;
+      var b = e.target.closest(".m-btn, .datebar button"); if (!b || b.disabled || b.classList.contains("js-live")) return;
       var t = $(".mock-toast", frame);
       if (!t) { t = document.createElement("div"); t.className = "mock-toast"; t.setAttribute("role", "status"); frame.appendChild(t); }
       t.textContent = "見本のため、この先の画面はありません";
@@ -1264,6 +1305,57 @@ document.documentElement.classList.add("js");
       var b = e.target.closest("button"); if (!b || b.disabled) return;
       $$("button", g).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
     });
+  });
+
+  /* owner approval lists */
+  $$(".js-appr").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-a]"); if (!b) return;
+      var row = b.closest(".apr"), acts = $(".acts", row);
+      var res = document.createElement("div");
+      res.className = "res";
+      res.textContent = b.dataset.a === "ok" ? "認めました。反映し、申し出た人のホームにも出ます" : "認めませんでした。元のまま残ります";
+      acts.replaceWith(res);
+      row.classList.add("done");
+      var left = $$(".apr:not(.done)", box).length;
+      var n = $(".js-apn", box);
+      n.textContent = left ? left + "件" : "なし";
+      n.className = left ? "tag warn js-apn" : "tag ok js-apn";
+    });
+  });
+
+  /* staff request: cancel / change with a reason */
+  var rqMode = "";
+  function rqReset() {
+    rqMode = "";
+    $("#rqForm").hidden = true; $("#rqDone").hidden = true;
+    $$("#rq .chips button").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+    $("#rqSend").disabled = true; $("#rqHint").textContent = "理由を選ぶと出せます";
+    $("#wtTag").textContent = "予約"; $("#wtTag").className = "tag";
+  }
+  $$("#rq [data-mode]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      rqReset(); rqMode = b.dataset.mode;
+      $("#rqForm").hidden = false;
+      $("#rqNew").hidden = rqMode !== "change";
+      $("#rqChange").hidden = rqMode !== "change";
+      $("#rqCancel").hidden = rqMode !== "cancel";
+    });
+  });
+  $$("#rqCancel, #rqChange").forEach(function (g) {
+    g.addEventListener("click", function (e) {
+      if (!e.target.closest("button")) return;
+      $("#rqSend").disabled = false;
+      $("#rqHint").textContent = app.dataset.role === "owner" ? "オーナーの操作は確認なしで反映し、理由は記録に残ります" : "オーナーが認めるまで、予約は元のまま残ります";
+    });
+  });
+  $("#rqSend").addEventListener("click", function () {
+    var owner = app.dataset.role === "owner", what = rqMode === "cancel" ? "キャンセル" : "変更";
+    $("#rqForm").hidden = true;
+    var d = $("#rqDone"); d.hidden = false;
+    d.className = owner ? "diff" : "diff ng";
+    d.textContent = owner ? what + "を反映しました。理由は操作の記録に残ります" : what + "の確認待ちです。オーナーが認めるまで予約は元のまま残り、それまでは取り下げられます";
+    var t = $("#wtTag"); t.textContent = owner ? (rqMode === "cancel" ? "キャンセル" : "11/27に変更") : what + "確認待ち"; t.className = owner ? "tag" : "tag warn";
   });
 
   /* payment: up to two methods (phone and iPad share the same parts) */
