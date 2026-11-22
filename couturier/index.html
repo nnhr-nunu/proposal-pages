@@ -272,7 +272,7 @@ html:not(.js) .vlabel { display: block; font-weight: 600; margin-bottom: var(--s
 .padnav button[aria-current="page"] { color: var(--color-accent); font-weight: 600; border-left-color: var(--color-accent); background: var(--color-accent-soft); }
 .padnav svg { width: 22px; height: 22px; }
 .padbody { flex: 1; min-width: 0; min-height: 0; overflow: auto; padding: var(--space-md); background: var(--color-paper); position: relative; }
-.lanes { display: grid; grid-template-columns: 52px repeat(4, minmax(0, 1fr)); grid-template-rows: 40px repeat(20, 26px); min-width: 620px; background: var(--color-surface); border: var(--rule-hair) solid var(--color-rule); }
+.lanes { display: grid; grid-template-columns: 52px repeat(3, minmax(0, 1fr)); grid-template-rows: 40px repeat(20, 26px); min-width: 620px; background: var(--color-surface); border: var(--rule-hair) solid var(--color-rule); }
 .lanes .h { grid-row: 1; padding: var(--space-xs); font-weight: 600; border-bottom: var(--rule-hair) solid var(--color-rule-ink); border-left: var(--rule-hair) solid var(--color-rule); }
 .lanes .h small { font-weight: 400; color: var(--color-muted); }
 .lanes .tm { grid-column: 1; font-size: var(--text-2xs); color: var(--color-muted); padding: 0 var(--space-2xs); border-top: var(--rule-hair) solid var(--color-rule); font-variant-numeric: tabular-nums; }
@@ -390,11 +390,11 @@ legend { padding: 0; font-weight: 600; }
 <dl class="facts">
 <div><dt>開発費用（税込）</dt><dd class="big">150,000円</dd></div>
 <div><dt>月々の保守費用</dt><dd>いただきません<small>アプリを動かす場所の費用も、この規模なら無料の範囲に収まる見込みです</small></dd></div>
-<div><dt>本番開始の目安</dt><dd>2027年2月1日<small>値上げ後の料金で、2月分の精算からアプリで出します</small></dd></div>
+<div><dt>本番開始の目安</dt><dd>2027年2月1日ごろ<small>日はご相談して決めます。値上げ後の料金で、その月の精算からアプリで出します</small></dd></div>
 </dl>
 <div class="actions">
 <a class="btn" href="#mock">画面の見本を触る</a>
-<a class="btn-line" href="#reply">お返事いただくこと</a>
+<a class="btn-line" href="#reply">いただいたお返事</a>
 </div>
 </div>
 </header>
@@ -415,7 +415,7 @@ legend { padding: 0; font-weight: 600; }
 <li><a href="#s-contract">1.8 ご契約</a></li>
 </ul></li>
 <li><a class="toc-part" href="#mock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>2. 画面の見本</a></li>
-<li><a class="toc-part" href="#reply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>3. お返事いただくこと</a>
+<li><a class="toc-part" href="#reply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>3. いただいたお返事</a>
 <ul>
 <li><a href="#calc">3.1 歩合の計算の決め方</a></li>
 <li><a href="#s-ask">3.2 そのほかの確認</a></li>
@@ -492,7 +492,7 @@ legend { padding: 0; font-weight: 600; }
 <section id="s-features">
 <h3>1.3 アプリでできるようになること</h3>
 <dl class="spec">
-<div id="f-resv"><dt>予約</dt><dd><ul><li>スマホでは1日の予約を縦に並べて、iPad・パソコンでは<b>スタッフ別の1日の表と週の表</b>で見られます。</li><li><b>6か月先まで</b>入れられます。同じスタッフの時間の重なりや3席を超える予約は、入れるときにお知らせします。</li><li>LiME から移すときは、日付と担当を引き継いだまま続けて入れられます。</li></ul></dd></div>
+<div id="f-resv"><dt>予約</dt><dd><ul><li>スマホでは1日の予約を縦に並べて、iPad・パソコンでは<b>スタッフ別の1日の表と週の表</b>で見られます。iPad・パソコンの表は、画面の縦向き・横向きのどちらでも見られます。</li><li><b>6か月先まで</b>入れられます。同じスタッフの時間の重なりや3席を超える予約は、入れるときにお知らせします。</li><li>LiME から移すときは、日付と担当を引き継いだまま続けて入れられます。</li></ul></dd></div>
 <div id="f-pay"><dt>会計と会計チェック</dt><dd><ul><li>予約からそのまま会計へ進み、技術と店販を分けて入れます。</li><li>支払い方法は現金・クレジットカード・ホットペッパーのポイント・楽天ペイ・au PAY・交通系IC・iD/QUICPay から選び、<b>2つの方法の併用</b>もできます。</li><li>会計まだの予約は、<b>日が過ぎてもオーナーの画面の一覧に残ります</b>。</li><li>予約の金額と違うときは、<b>理由を1タップで残せます</b>（料金の調整・割引・メニュー変更・店販の追加など）。予約の金額はメニューから入るので、サロンボードでは空欄になりがちな電話予約も比べられます。</li><li>店販だけのお客様は、予約なしで会計できます。</li></ul></dd></div>
 <div id="f-settle"><dt>歩合と月末の精算書</dt><dd><ul><li>スタッフごとに、技術・店販・キャッシュレス手数料の率を設定します。率は変える日を決めて登録でき、<b>変えても過去の精算は変わりません</b>。</li><li>月末に、<b>現金の分・キャッシュレスの分・その差し引き</b>を精算書にします。</li><li>オーナーが<b>月を締めると確定</b>し、印刷と書き出しができます。締めた月のあとで返金したときは、返金した月の精算で差し引きます。</li></ul></dd></div>
 <div><dt>売上</dt><dd><ul><li><b>スタッフは自分の売上だけ</b>、オーナーは全員分を見られます。</li><li>表計算ソフトで開けるファイルに書き出せます。</li></ul></dd></div>
@@ -556,7 +556,7 @@ legend { padding: 0; font-weight: 600; }
 </table>
 </div>
 <p class="muted small">操作の説明書（画面つき。よくある困りごとと直し方も載せます）づくりも、この金額に入っています。更新のお知らせとご意見の送信は、納品後の不具合の対応を早く確かに行うための仕組みなので、金額に足さずにお付けします。</p>
-<p><b>オプション：お知らせのメール 10,000円（税込）</b>。メールを送る仕組みづくりと、送り元のアドレスの用意・維持の分です。送り元のアドレスはこちらで用意するので、お店の費用はこれ以外にかかりません。付けるかどうかは問15 でお選びください。納品後に付けるときも同じ金額です。</p>
+<p><b>オプション：お知らせのメール 10,000円（税込）</b>。メールを送る仕組みづくりと、送り元のアドレスの用意・維持の分です。送り元のアドレスはこちらで用意するので、お店の費用はこれ以外にかかりません。今回は付けないとのお返事をいただきました（問15）。納品後に付けるときも同じ金額です。</p>
 <h4>1.5.3 この金額とは別にかかるもの</h4>
 <p><b>かかるのは、アプリを動かす場所の費用だけで、この規模なら無料の範囲に収まる見込みです。</b> 登録はお店の名義（お店のメールアドレス）で行い、手順はご案内します。使う量が増えて無料の範囲を超えたときだけ、お店から直接お支払いいただきます（月2,000円ほどまでの見込みです）。</p>
 <p>月々の保守費用はいただきません。次の変更は、お店側で画面からできる作りにします。</p>
@@ -597,7 +597,7 @@ legend { padding: 0; font-weight: 600; }
 
 <section id="s-plan">
 <h3>1.7 進め方と期間</h3>
-<p>年末年始の忙しい時期に入力のやり方を変えないよう、2月1日の本番開始から逆算して日程を組みました。</p>
+<p>年末年始の忙しい時期に入力のやり方を変えないよう、仮に2月1日の本番開始から逆算して日程を組みました。本番開始の日が決まったら、そこから組み直します。</p>
 <div class="scroll-x tl-wrap">
 <div class="tl" role="img" aria-label="12月上旬にご依頼と着手、12月から1月中旬まで制作、1月に触って直す、1月下旬に先の予約の移し替え、2月1日から本番">
 <span class="lb"></span><span class="wk">11/30</span><span class="wk">12/7</span><span class="wk">12/14</span><span class="wk">12/21</span><span class="wk">12/28</span><span class="wk">1/4</span><span class="wk">1/11</span><span class="wk">1/18</span><span class="wk">1/25</span><span class="wk">2/1</span>
@@ -609,12 +609,12 @@ legend { padding: 0; font-weight: 600; }
 </div>
 </div>
 <ol class="steps">
-<li>このページへのお返事（「<a href="#reply">3. お返事いただくこと</a>」。メッセージで進めます）</li>
+<li>このページへのお返事（「<a href="#reply">3. いただいたお返事</a>」。メッセージで進めます）</li>
 <li>正式なご依頼（契約書をクラウドサインで取り交わします）</li>
 <li>制作（約7週間。途中で、実際に動く画面をお送りします）</li>
 <li>触っていただいて、気になるところを直して仕上げ</li>
 <li>メニュー・お客様情報の登録のお手伝い、先の予約の移し替え、使い方のご説明<ul><li>お客様情報はサロンボードから書き出せないので、サロンボードの予約のファイルから台帳を自動で作ります（同じ方か迷うものは、お店で選んでいただきます）。</li><li>LiME から表計算ソフトで開けるファイルが出せれば、お名前・ふりがな・電話番号も取り込みます。足りない分は手で入れます（お名前とふりがなだけでも始められます）。</li></ul></li>
-<li>2月1日から本番。その前に、1月分の請求書の数字をアプリの精算の計算に入れ、今のやり方と同じ結果になるかをこちらで確かめます（1月分の請求書の写しをお送りください）</li>
+<li>本番開始（仮に2月1日）。その前に、1月分の請求書の数字をアプリの精算の計算に入れ、今のやり方と同じ結果になるかをこちらで確かめます（1月分の請求書の写しをお送りください）</li>
 </ol>
 </section>
 
@@ -655,7 +655,7 @@ legend { padding: 0; font-weight: 600; }
 <div class="mc only-staff"><div class="row"><b>申し出の結果</b><span class="tag ok">認められました</span></div><div class="muted small">森 様 12/2（水）11:00 → 12/9（水）11:00 の変更（11/19 深谷）</div></div>
 <div class="mc flat"><div class="row"><b>更新しました（11/18）</b><span class="tag info">1.0.3</span></div><div class="muted small">精算書の印刷で、2ページ目の見出しが抜けていたのを直しました</div></div>
 <p class="m-sec">今日 11月20日（金）の自分の予約</p>
-<div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">カット＋指名料 ¥10,700</span></span><span class="tag ok">会計済み</span></div></div>
+<div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">カット＋トリートメント ¥10,700</span></span><span class="tag ok">会計済み</span></div></div>
 <div class="mc"><div class="resv"><span class="t">13:30</span><span><span class="who">伊藤 様</span><br><span class="muted">カット＆カラー ¥15,950</span></span><span class="tag warn">会計まだ</span></div></div>
 <div class="mc"><div class="resv"><span class="t">16:00</span><span><span class="who">渡辺 様</span><br><span class="muted">ヘアカット ¥7,700</span></span><span class="tag">予約</span></div></div>
 <p class="m-sec only-staff">今月の自分の売上（11月20日まで）</p>
@@ -671,7 +671,7 @@ legend { padding: 0; font-weight: 600; }
 <div class="datebar"><button type="button" aria-label="前の日"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><b>11月20日（金）</b><button type="button" aria-label="次の日"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
 <div class="chips" role="group" aria-label="担当"><button type="button" class="chip" aria-pressed="false">全員</button><button type="button" class="chip" aria-pressed="false">深谷</button><button type="button" class="chip" aria-pressed="true">吉留</button><button type="button" class="chip" aria-pressed="false">岸</button><button type="button" class="chip" disabled>玉野井（休み）</button></div>
 <p class="m-sec">席の使われ方：13時台 3席のうち2席</p>
-<div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">10:30〜12:00 カット＋指名料</span></span><span class="tag ok">会計済み</span></div></div>
+<div class="mc"><div class="resv"><span class="t">10:30</span><span><span class="who">高橋 様</span><br><span class="muted">10:30〜12:00 カット＋トリートメント</span></span><span class="tag ok">会計済み</span></div></div>
 <div class="mc"><div class="resv"><span class="t">13:30</span><span><span class="who">伊藤 様</span><br><span class="muted">13:30〜15:30 カット＆カラー／現金</span></span><span class="tag warn">会計まだ</span></div></div>
 <div class="mc"><div class="resv"><span class="t">16:00</span><span><span class="who">渡辺 様</span><br><span class="muted">16:00〜17:00 ヘアカット</span></span><span class="tag" id="wtTag">予約</span></div></div>
 <p class="m-sec">渡辺 様の予約を開いたところ</p>
@@ -733,11 +733,11 @@ legend { padding: 0; font-weight: 600; }
 <div class="lines">
 <div><span>キャッシュレスとポイント（税込）</span><span class="v" id="sp-clIn">¥361,900</span></div>
 <div><span>スタッフの取り分</span><span class="v" id="sp-clShare">¥215,900</span></div>
-<div><span>手数料</span><span class="v" id="sp-fee">−¥12,666</span></div>
-<div class="sum"><span>お店から払う額</span><span class="v" id="sp-pay">¥203,234</span></div>
+<div><span>手数料</span><span class="v" id="sp-fee">−¥12,474</span></div>
+<div class="sum"><span>お店から払う額</span><span class="v" id="sp-pay">¥203,426</span></div>
 </div>
 </div>
-<div class="mc flat"><div class="row"><b id="sp-netDir">差し引き：お店からスタッフへ</b><span class="fig" id="sp-net">¥119,234</span></div></div>
+<div class="mc flat"><div class="row"><b id="sp-netDir">差し引き：お店からスタッフへ</b><span class="fig" id="sp-net">¥119,426</span></div></div>
 <button type="button" class="m-btn sub">印刷する／ファイルで出す</button>
 <button type="button" class="m-btn only-owner">10月を締める</button>
 <p class="muted small only-owner" style="margin-top:var(--space-2xs);">締めたあとは、オーナーだけが直せます</p>
@@ -778,19 +778,17 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>深谷</td><td>出</td><td>出</td><td>出</td><td>出</td><td>出</td></tr>
 <tr><td>吉留</td><td>出</td><td>出</td><td>出</td><td class="off">休</td><td>12時〜</td></tr>
 <tr><td>岸</td><td>出</td><td>出</td><td class="off">休</td><td>出</td><td>出</td></tr>
-<tr><td>玉野井</td><td class="off">休</td><td>出</td><td>出</td><td>出</td><td class="off">休</td></tr>
 </tbody></table></div>
 <p class="m-sec">歩合の率（11月から）</p>
 <div class="mc"><table class="mini"><thead><tr><th></th><th class="num">技術</th><th class="num">店販</th><th class="num">手数料</th></tr></thead><tbody>
 <tr><td>吉留</td><td class="num">65%</td><td class="num">10%</td><td class="num">4%</td></tr>
 <tr><td>岸</td><td class="num">55%</td><td class="num">10%</td><td class="num">4%</td></tr>
-<tr><td>玉野井</td><td class="num" colspan="3">未設定</td></tr>
 </tbody></table></div>
 <p class="m-sec">支払い方法とお金の入り先</p>
 <div class="mc"><table class="mini"><tbody>
 <tr><td>現金</td><td>スタッフの手元</td></tr>
 <tr><td>クレジットカード・楽天ペイ・au PAY・交通系IC・iD・QUICPay</td><td>お店（手数料の対象）</td></tr>
-<tr><td>ホットペッパーのポイント</td><td>お店（手数料はご確認中）</td></tr>
+<tr><td>ホットペッパーのポイント</td><td>お店（手数料は引かない）</td></tr>
 </tbody></table></div>
 <p class="m-sec">スタッフの操作でオーナーの確認が要るもの</p>
 <div class="mc"><table class="mini"><tbody>
@@ -867,7 +865,7 @@ legend { padding: 0; font-weight: 600; }
 <div class="padbody">
 <div class="oppanel" id="opPanel" hidden>
 <p class="opstep" id="opStep">操作する人を選ぶ</p>
-<div class="chips" id="opStaff" role="group" aria-label="操作する人"><button type="button" class="chip" aria-pressed="false">深谷</button><button type="button" class="chip" aria-pressed="false">吉留</button><button type="button" class="chip" aria-pressed="false">岸</button><button type="button" class="chip" aria-pressed="false">玉野井</button></div>
+<div class="chips" id="opStaff" role="group" aria-label="操作する人"><button type="button" class="chip" aria-pressed="false">深谷</button><button type="button" class="chip" aria-pressed="false">吉留</button><button type="button" class="chip" aria-pressed="false">岸</button></div>
 <div id="opPin" hidden>
 <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="pin" id="pinPad"><button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button><button type="button">6</button><button type="button">7</button><button type="button">8</button><button type="button">9</button><button type="button" data-k="cancel" style="font-size:var(--text-sm);">やめる</button><button type="button">0</button><button type="button" data-k="back" style="font-size:var(--text-sm);">1字消す</button></div>
@@ -893,11 +891,9 @@ legend { padding: 0; font-weight: 600; }
 <div class="h" style="grid-column:2;">深谷 <small>10〜20時</small></div>
 <div class="h" style="grid-column:3;">吉留 <small>10〜19時</small></div>
 <div class="h" style="grid-column:4;">岸 <small>10〜20時</small></div>
-<div class="h" style="grid-column:5;">玉野井</div>
-<div class="off" style="grid-column:5;grid-row:2 / 22;">休み</div>
 <div class="b paid" style="grid-column:2;grid-row:2 / 4;"><b>田中 様</b>10:00 カット</div>
 <div class="b unpaid" style="grid-column:2;grid-row:8 / 13;"><b>佐藤 様</b>13:00 カット＆カラー 会計まだ</div>
-<div class="b paid" style="grid-column:3;grid-row:3 / 6;"><b>高橋 様</b>10:30 カット＋指名料</div>
+<div class="b paid" style="grid-column:3;grid-row:3 / 6;"><b>高橋 様</b>10:30 カット＋トリートメント</div>
 <div class="b unpaid" style="grid-column:3;grid-row:9 / 13;"><b>伊藤 様</b>13:30 カット＆カラー 会計まだ</div>
 <div class="b" style="grid-column:3;grid-row:14 / 16;"><b>渡辺 様</b>16:00 ヘアカット</div>
 <div class="b" style="grid-column:4;grid-row:4 / 7;"><b>山本 様</b>11:00 カット</div>
@@ -919,7 +915,6 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>深谷</td><td class="num">2件</td><td class="num">4件</td><td class="num">3件</td><td class="off num">店休日</td><td class="off num">店休日</td><td class="num">3件</td><td class="num">2件</td></tr>
 <tr><td>吉留</td><td class="num">3件</td><td class="num">5件</td><td class="num">5件</td><td class="off num">店休日</td><td class="off num">店休日</td><td class="off num">休み</td><td class="num">3件</td></tr>
 <tr><td>岸</td><td class="num">3件</td><td class="num">4件</td><td class="off num">休み</td><td class="off num">店休日</td><td class="off num">店休日</td><td class="num">2件</td><td class="num">3件</td></tr>
-<tr><td>玉野井</td><td class="off num">休み</td><td class="num">3件</td><td class="num">2件</td><td class="off num">店休日</td><td class="off num">店休日</td><td class="num">2件</td><td class="off num">休み</td></tr>
 </tbody>
 </table>
 </div>
@@ -1033,7 +1028,6 @@ legend { padding: 0; font-weight: 600; }
 <tr><td>深谷</td><td>出</td><td>出</td><td>出</td><td class="off">店休</td><td class="off">店休</td><td>出</td><td>出</td></tr>
 <tr><td>吉留</td><td>出</td><td>出</td><td>出</td><td class="off">店休</td><td class="off">店休</td><td class="off">休</td><td>12時〜</td></tr>
 <tr><td>岸</td><td>出</td><td>出</td><td class="off">休</td><td class="off">店休</td><td class="off">店休</td><td>出</td><td>出</td></tr>
-<tr><td>玉野井</td><td class="off">休</td><td>出</td><td>出</td><td class="off">店休</td><td class="off">店休</td><td>出</td><td class="off">休</td></tr>
 </tbody></table></div>
 </div>
 <div>
@@ -1047,7 +1041,6 @@ legend { padding: 0; font-weight: 600; }
 <div class="mc"><table class="mini"><thead><tr><th></th><th class="num">技術</th><th class="num">店販</th><th class="num">手数料</th></tr></thead><tbody>
 <tr><td>吉留</td><td class="num">65%</td><td class="num">10%</td><td class="num">4%</td></tr>
 <tr><td>岸</td><td class="num">55%</td><td class="num">10%</td><td class="num">4%</td></tr>
-<tr><td>玉野井</td><td class="num" colspan="3">未設定</td></tr>
 </tbody></table></div>
 </div>
 <div>
@@ -1055,7 +1048,7 @@ legend { padding: 0; font-weight: 600; }
 <div class="mc"><table class="mini"><tbody>
 <tr><td>現金</td><td>スタッフの手元</td></tr>
 <tr><td>クレジットカード・楽天ペイ・au PAY・交通系IC・iD・QUICPay</td><td>お店（手数料の対象）</td></tr>
-<tr><td>ホットペッパーのポイント</td><td>お店（手数料はご確認中）</td></tr>
+<tr><td>ホットペッパーのポイント</td><td>お店（手数料は引かない）</td></tr>
 </tbody></table></div>
 </div>
 <div>
@@ -1108,16 +1101,17 @@ legend { padding: 0; font-weight: 600; }
 <h3>この画面へのコメント</h3>
 <p class="muted small" id="commentTarget">いまの画面：ホーム</p>
 <textarea id="commentBox" placeholder="例：ホームに明日の予約も出してほしい／文字をもう少し大きく"></textarea>
-<p class="muted small">書いたコメントはこの端末に残り、「<a href="#reply">3. お返事いただくこと</a>」でまとめて送れます。</p>
+<p class="muted small">書いたコメントはこの端末に残り、「<a href="#reply">3. いただいたお返事</a>」でまとめて送れます。</p>
 </div>
 </div>
 </section>
 
 <section class="part" id="reply" aria-labelledby="h-reply">
-<h2 class="part-h" id="h-reply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span>3. お返事いただくこと</span></h2>
+<h2 class="part-h" id="h-reply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span>3. いただいたお返事</span></h2>
 
 <section id="calc">
 <h3>3.1 歩合の計算の決め方（問1〜5）</h3>
+<p>2026年11月22日にいただいたお返事を選んだ状態にしています。直したいところがあれば選び直して、「3.3 まとめて送る」からお送りください。</p>
 <p>仮の率（吉留さん：技術65%・店販10%・手数料4%、岸さん：技術55%・店販10%・手数料4%）で、仮の金額の1か月分を計算した例です。</p>
 <form class="calc" id="calcForm" onsubmit="return false;">
 <div class="c-in">
@@ -1154,36 +1148,36 @@ legend { padding: 0; font-weight: 600; }
 <div class="lines">
 <div><span>キャッシュレスとポイント（税込）</span><span class="v" id="r-clIn">¥361,900</span></div>
 <div><span>スタッフの取り分<span class="f" id="f-clShare">305,000×65%＋24,000×10%</span></span><span class="v" id="r-clShare">¥215,900</span></div>
-<div><span>手数料<span class="f" id="f-fee">361,900×4%</span></span><span class="v" id="r-fee">−¥12,666</span></div>
-<div class="sum"><span>お店から払う額</span><span class="v" id="r-pay">¥203,234</span></div>
+<div><span>手数料<span class="f" id="f-fee">356,400×4%</span></span><span class="v" id="r-fee">−¥12,474</span></div>
+<div class="sum"><span>お店から払う額</span><span class="v" id="r-pay">¥203,426</span></div>
 </div>
-<div class="netbox"><span id="r-netDir">差し引き：お店からスタッフへ</span><div class="fig" id="r-net">¥119,234</div><p class="muted small" style="margin-top:var(--space-2xs);">現金の分とキャッシュレスの分を、1回のやり取りにまとめた場合の額です</p></div>
+<div class="netbox"><span id="r-netDir">差し引き：お店からスタッフへ</span><div class="fig" id="r-net">¥119,426</div><p class="muted small" style="margin-top:var(--space-2xs);">現金の分とキャッシュレスの分を、1回のやり取りにまとめた場合の額です</p></div>
 </div>
 <div class="c-q">
 <fieldset class="q"><legend>問1　キャッシュレスの手数料は、どの金額に掛けますか</legend><div class="opts">
-<label><input type="radio" name="q1" value="paid" checked>キャッシュレスで払われた額（税込）<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="q1" value="paid" checked>キャッシュレスで払われた額（税込）<span class="rec">お返事</span></label>
 <label><input type="radio" name="q1" value="ex">キャッシュレスの売上の税抜</label>
 <label><input type="radio" name="q1" value="share">スタッフの取り分</label>
 </div></fieldset>
 <fieldset class="q"><legend>問2　ホットペッパーのポイントで払われた分は</legend><div class="opts">
-<label><input type="radio" name="q2" value="fee" checked>キャッシュレスと同じ（お店に入り、手数料も引く）<span class="rec">おすすめ</span></label>
-<label><input type="radio" name="q2" value="nofee">お店に入るが、手数料は引かない</label>
+<label><input type="radio" name="q2" value="fee">キャッシュレスと同じ（お店に入り、手数料も引く）</label>
+<label><input type="radio" name="q2" value="nofee" checked>お店に入るが、手数料は引かない<span class="rec">お返事</span></label>
 </div></fieldset>
 <fieldset class="q"><legend>問3　現金の分でお店へ渡す額は</legend><div class="opts">
-<label><input type="radio" name="q3" value="incl" checked>現金で受けた額（税込）から、取り分を引いた額<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="q3" value="incl" checked>現金で受けた額（税込）から、取り分を引いた額<span class="rec">お返事</span></label>
 <label><input type="radio" name="q3" value="ex">現金で受けた額の税抜から、取り分を引いた額</label>
 </div></fieldset>
 <fieldset class="q"><legend>問4　指名料は</legend><div class="opts">
-<label><input type="radio" name="q4" value="tech" checked>技術の売上に入れて、技術の率を掛ける<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="q4" value="tech" checked>技術の売上に入れて、技術の率を掛ける<span class="rec">お返事</span></label>
 <label><input type="radio" name="q4" value="staff">全額スタッフの取り分</label>
 <label><input type="radio" name="q4" value="shop">全額お店</label>
-</div><p class="muted small">割引と料金の調整は、引いた後の金額を売上にします。サロンボードでは割引の扱いが画面ごとに違い、ある月は画面によって数千円の差がありました。アプリではこの数え方1つにそろえます。この計算例の技術の金額には、指名料と割引が入っています。</p></fieldset>
+</div><p class="muted small">割引と料金の調整は、引いた後の金額を売上にします。サロンボードでは割引の扱いが画面ごとに違い、ある月は画面によって数千円の差がありました。アプリではこの数え方1つにそろえます。この計算例の技術の金額は、割引を引いた後の金額です。いまは指名料をいただいていないとのことなので、会計の欄には入れません（あとで付けるときは、ここで選んだ形で計算します）。</p></fieldset>
 <fieldset class="q"><legend>問5　1円未満の端数は</legend><div class="opts">
-<label><input type="radio" name="q5" value="floor" checked>切り捨て<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="q5" value="floor" checked>切り捨て<span class="rec">お返事</span></label>
 <label><input type="radio" name="q5" value="round">四捨五入</label>
 <label><input type="radio" name="q5" value="ceil">切り上げ</label>
 </div></fieldset>
-<p class="c-again" aria-live="polite">選んだ答えでの<span id="r-netDir2">差し引き：お店からスタッフへ</span> <b class="num" id="r-net2">¥119,234</b></p>
+<p class="c-again" aria-live="polite">選んだ答えでの<span id="r-netDir2">差し引き：お店からスタッフへ</span> <b class="num" id="r-net2">¥119,426</b></p>
 <div class="field" style="margin-top:var(--space-lg);"><label for="calcNote">計算について、ほかにあれば</label><textarea id="calcNote" data-save="_calc" placeholder="例：店販は現金でもキャッシュレスでも10%で合っています"></textarea></div>
 </div>
 </form>
@@ -1192,41 +1186,41 @@ legend { padding: 0; font-weight: 600; }
 <section id="s-ask">
 <h3>3.2 そのほかの確認（問6〜15）</h3>
 <div class="asks">
-<fieldset class="q"><legend>問6　玉野井さんの率</legend><div class="field"><label for="a6">技術・店販・手数料の率</label><input id="a6" class="t" type="text" data-save="a6" placeholder="例：技術50%・店販10%・手数料4%"></div></fieldset>
+<fieldset class="q"><legend>問6　玉野井さんの率</legend><p>玉野井さんはスタッフから外します。スタッフはオーナーが設定で足したり外したりでき、足すときは率を入れるだけです。</p><input id="a6" type="hidden" value="スタッフから外す"></fieldset>
 <fieldset class="q"><legend>問7　深谷様ご自身の施術の売上は</legend><div class="opts">
-<label><input type="radio" name="a7" value="1" checked>売上の集計だけにして、精算書は出さない<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="a7" value="1" checked>売上の集計だけにして、精算書は出さない<span class="rec">お返事</span></label>
 <label><input type="radio" name="a7" value="2">精算書も出す</label>
 </div></fieldset>
 <fieldset class="q"><legend>問8　月の締めは</legend><div class="opts">
-<label><input type="radio" name="a8" value="1" checked>月末締めで、翌月の初めにオーナーが締める<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="a8" value="1" checked>月末締めで、翌月の初めにオーナーが締める<span class="rec">お返事</span></label>
 <label><input type="radio" name="a8" value="2">ほかの日にしたい（下の補足に）</label>
 </div></fieldset>
 <fieldset class="q"><legend>問9　LiME の画面に、お客様や予約の「書き出し」「エクスポート」はありますか</legend><div class="opts">
 <label><input type="radio" name="a9" value="1">ある</label>
 <label><input type="radio" name="a9" value="2">ない（手で移します）</label>
-<label><input type="radio" name="a9" value="3">まだ分からない</label>
+<label><input type="radio" name="a9" value="3" checked>まだ分からない<span class="rec">お返事</span></label>
 </div></fieldset>
 <fieldset class="q"><legend>問10　先の予約の移し替えは</legend><div class="opts">
-<label><input type="radio" name="a10" value="1" checked>1月下旬に、各スタッフが自分の分をアプリに入れる（1人2〜3時間ほど）<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="a10" value="1" checked>1月下旬に、各スタッフが自分の分をアプリに入れる（1人2〜3時間ほど）<span class="rec">お返事</span></label>
 <label><input type="radio" name="a10" value="2">相談したい（下の補足に）</label>
 </div></fieldset>
 <fieldset class="q"><legend>問11　お店の iPad で操作する人の切り替えは</legend><div class="opts">
-<label><input type="radio" name="a11" value="1" checked>4桁の番号で切り替える<span class="rec">おすすめ</span></label>
+<label><input type="radio" name="a11" value="1" checked>4桁の番号で切り替える<span class="rec">お返事</span></label>
 <label><input type="radio" name="a11" value="2">別の形がよい（下の補足に）</label>
 </div></fieldset>
 <fieldset class="q"><legend>問12　本番開始は</legend><div class="opts">
-<label><input type="radio" name="a12" value="1" checked>2027年2月1日（値上げ後の料金で）<span class="rec">おすすめ</span></label>
-<label><input type="radio" name="a12" value="2">相談したい（下の補足に）</label>
+<label><input type="radio" name="a12" value="1">2027年2月1日（値上げ後の料金で）</label>
+<label><input type="radio" name="a12" value="2" checked>相談したい（下の補足に）<span class="rec">お返事</span></label>
 </div><p class="muted small">値上げ後のメニュー表（サロンボードの料金表）ができたら、教えてください。</p></fieldset>
 <fieldset class="q"><legend>問13　キャンセル料をいただいたときは</legend><div class="opts">
 <label><input type="radio" name="a13" value="1">担当スタッフの売上として、歩合に入れる</label>
 <label><input type="radio" name="a13" value="2">お店の売上にして、歩合には入れない</label>
-<label><input type="radio" name="a13" value="3">キャンセル料はいただいていない</label>
+<label><input type="radio" name="a13" value="3" checked>キャンセル料はいただいていない<span class="rec">お返事</span></label>
 </div></fieldset>
-<fieldset class="q"><legend>問14　いま、月末の精算にどのくらい時間がかかっていますか</legend><div class="field"><label for="a14">分かる範囲で</label><input id="a14" class="t" type="text" data-save="a14" placeholder="例：スタッフ1人1時間くらい、オーナーの確認に2時間"></div></fieldset>
+<fieldset class="q"><legend>問14　いま、月末の精算にどのくらい時間がかかっていますか</legend><div class="field"><label for="a14">分かる範囲で</label><input id="a14" class="t" type="text" data-save="a14" placeholder="例：スタッフ1人1時間くらい、オーナーの確認に2時間" value="オーナー5分、スタッフ5分"></div></fieldset>
 <fieldset class="q"><legend>問15　お知らせのメール（オプション 10,000円）は</legend><div class="opts">
 <label><input type="radio" name="a15" value="1">付ける</label>
-<label><input type="radio" name="a15" value="2">付けない（ホームの件数を1日1回見る）</label>
+<label><input type="radio" name="a15" value="2" checked>付けない（ホームの件数を1日1回見る）<span class="rec">お返事</span></label>
 <label><input type="radio" name="a15" value="3">あとで決める</label>
 </div></fieldset>
 <div class="field" style="margin-top:var(--space-lg);"><label for="askNote">補足</label><textarea id="askNote" data-save="_ask" placeholder="例：締めは25日にしたい"></textarea></div>
@@ -1304,7 +1298,7 @@ document.documentElement.classList.add("js");
   }
   box.addEventListener("input", function () { comments[current()] = box.value; save(); countMock(); });
   $$("[data-save]").forEach(function (el) {
-    el.value = comments[el.dataset.save] || "";
+    el.value = comments[el.dataset.save] || el.defaultValue || "";
     el.addEventListener("input", function () { comments[el.dataset.save] = el.value; save(); });
   });
 
@@ -1457,7 +1451,7 @@ document.documentElement.classList.add("js");
     { name: "伊藤 様", n: 18, memo: "メモ：白髪染めは暗め希望。シャンプーは頭皮ケア系をよく購入",
       rows: [["2026/9/18", "吉留", "カット＆カラー＋店販", "現金", 19250], ["2026/7/24", "吉留", "カット＆カラー", "クレジットカード", 15950], ["2026/5/30", "岸", "ヘアカット", "楽天ペイ", 7700]] },
     { name: "高橋 様", n: 6, memo: "メモ：前髪は短めが好み",
-      rows: [["2026/11/20", "吉留", "カット＋指名料", "交通系IC", 10700], ["2026/9/12", "吉留", "カット＋指名料", "交通系IC", 10700]] },
+      rows: [["2026/11/20", "吉留", "カット＋トリートメント", "交通系IC", 10700], ["2026/9/12", "吉留", "カット＋トリートメント", "交通系IC", 10700]] },
     { name: "渡辺 様", n: 3, memo: "メモ：なし",
       rows: [["2026/10/3", "岸", "ヘアカット", "現金", 7700], ["2026/8/1", "岸", "ヘアカット", "現金", 7700]] },
     { name: "田中 様", n: 11, memo: "メモ：耳まわりはすっきり",
@@ -1540,7 +1534,7 @@ document.documentElement.classList.add("js");
     yoshidome: { name: "吉留", t: 65, g: 10, f: 4, cashTech: 198000, cashGoods: 13200, clTech: 330000, clGoods: 26400, point: 5500 },
     kishi: { name: "岸", t: 55, g: 10, f: 4, cashTech: 132000, cashGoods: 6600, clTech: 220000, clGoods: 11000, point: 3300 }
   };
-  var defaults = { q1: "paid", q2: "fee", q3: "incl", q5: "floor" };
+  var defaults = { q1: "paid", q2: "nofee", q3: "incl", q5: "floor" };
   function settle(p, o) {
     var r = o.q5 === "round" ? Math.round : o.q5 === "ceil" ? Math.ceil : Math.floor;
     /* integer math: tax-excluded = x * 10 / 11, rates in percent divided once, so 0.1 errors never shift a yen */
@@ -1577,8 +1571,7 @@ document.documentElement.classList.add("js");
   var shifts = {
     "深谷": ["10:00〜20:00", "10:00〜20:00", "10:00〜20:00", "", "", "10:00〜20:00", "10:00〜20:00"],
     "吉留": ["10:00〜19:00", "10:00〜20:00", "10:00〜19:00", "", "", "休み", "12:00〜20:00"],
-    "岸": ["10:00〜20:00", "10:00〜20:00", "休み", "", "", "10:00〜20:00", "10:00〜20:00"],
-    "玉野井": ["休み", "10:00〜20:00", "10:00〜20:00", "", "", "10:00〜20:00", "休み"]
+    "岸": ["10:00〜20:00", "10:00〜20:00", "休み", "", "", "10:00〜20:00", "10:00〜20:00"]
   };
   var days = ["11/20（金）", "11/21（土）", "11/22（日）", "11/23（月）", "11/24（火）", "11/25（水）", "11/26（木）"];
   function settleCells(s) {
@@ -1588,7 +1581,7 @@ document.documentElement.classList.add("js");
   }
   function renderPadSettle() {
     var owner = operator === "深谷";
-    var names = owner ? ["吉留", "岸", "玉野井"] : [operator];
+    var names = owner ? ["吉留", "岸"] : [operator];
     var tot = { cashIn: 0, cashShare: 0, collect: 0, clIn: 0, clShare: 0, fee: 0, pay: 0, net: 0 }, any = 0;
     var html = names.map(function (nm) {
       if (!staffKey[nm]) return "<tr><td>" + esc(nm) + '</td><td class="muted" colspan="8">歩合の率が未設定のため、まだ計算できません</td></tr>';
@@ -1648,7 +1641,7 @@ document.documentElement.classList.add("js");
   form.addEventListener("change", renderCalc);
 
   /* ---------- summary: every answer on the page, in one text ---------- */
-  function pick(n) { var el = document.querySelector("input[name='" + n + "']:checked"); return el ? el.parentNode.firstChild.nextSibling.textContent.trim() + (el.defaultChecked ? "（おすすめのまま）" : "") : "未回答"; }
+  function pick(n) { var el = document.querySelector("input[name='" + n + "']:checked"); return el ? el.parentNode.firstChild.nextSibling.textContent.trim() + (el.defaultChecked ? "（お返事のまま）" : "") : "未回答"; }
   function val(id) { return $("#" + id).value.trim() || "未回答"; }
   function note(k) { return comments[k] && comments[k].trim(); }
   function makeSummary() {
